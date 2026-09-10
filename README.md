@@ -77,7 +77,7 @@ WNST is a lightweight Windows utility that brings system, network, performance, 
 ### 💻 Installation / Usage :
 
 <table>
-  <tr><td>Download the latest release here</td></tr>
+  <tr><td>Download the latest release [here](https://github.com/SaiyajinK/WNST-for-Windows/releases)</td></tr>
   <tr><td>Extract the archive and run <code>WNST.vbs</code>.</td></tr>
 </table>
 
