@@ -1,0 +1,268 @@
+﻿<Grid x:Name="DebloatPage" Visibility="Collapsed" Style="{StaticResource ScrollablePageContentStyle}">
+  <Grid.RowDefinitions>
+    <RowDefinition Height="Auto"/>
+    <RowDefinition Height="*"/>
+  </Grid.RowDefinitions>
+
+  <StackPanel Style="{StaticResource PageHeaderContentStyle}" VerticalAlignment="Center">
+    <TextBlock x:Name="DebloatTitle" Text="Debloat" FontSize="24" FontWeight="SemiBold" Foreground="{DynamicResource AccentBrush}" Margin="0,10,0,0"/>
+    <TextBlock x:Name="DebloatSubtitle" Text="Gérez les applications AppX installées pour les utilisateurs et provisionnées pour les nouveaux profils." Foreground="{DynamicResource MutedBrush}" Margin="0,3,0,0" TextWrapping="Wrap"/>
+  </StackPanel>
+
+  <ScrollViewer Grid.Row="1"
+                Style="{StaticResource PageScrollViewerStyle}"
+                VerticalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Disabled"
+                Margin="0,0,-12,0">
+    <StackPanel Style="{StaticResource PageScrollContentStyle}" Margin="0,14,0,0">
+
+      <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+
+          <StackPanel VerticalAlignment="Top" Margin="0,0,24,0">
+            <TextBlock x:Name="AppxManagerTitle" Text="Gestionnaire AppX" Foreground="{DynamicResource CardTitleBrush}" FontSize="14" FontWeight="SemiBold"/>
+            <TextBlock x:Name="AppxManagerHint" Text="" Visibility="Collapsed"/>
+
+            <StackPanel Margin="0,13,0,0" VerticalAlignment="Center">
+              <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,7">
+                <CheckBox x:Name="AppxFilterRecommendedCheck" IsEnabled="False" VerticalAlignment="Center" Margin="0,0,7,0"/>
+                <Ellipse Width="8" Height="8" Fill="#4CC38A" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                <TextBlock x:Name="AppxLegendRecommended" Text="Recommandé : suppression sûre" Foreground="{DynamicResource MutedBrush}" FontSize="12" VerticalAlignment="Center"/>
+              </StackPanel>
+
+              <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,7">
+                <CheckBox x:Name="AppxFilterOptionalCheck" IsEnabled="False" VerticalAlignment="Center" Margin="0,0,7,0"/>
+                <Ellipse Width="8" Height="8" Fill="#EAA300" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                <TextBlock x:Name="AppxLegendOptional" Text="Optionnel : selon vos besoins" Foreground="{DynamicResource MutedBrush}" FontSize="12" VerticalAlignment="Center"/>
+              </StackPanel>
+
+              <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,7">
+                <CheckBox x:Name="AppxFilterProtectedCheck" IsEnabled="False" VerticalAlignment="Center" Margin="0,0,7,0"/>
+                <Ellipse Width="8" Height="8" Fill="#D13438" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                <TextBlock x:Name="AppxLegendProtected" Text="Protégé : suppression dangereuse (double-clic pour autoriser)" Foreground="{DynamicResource MutedBrush}" FontSize="12" VerticalAlignment="Center"/>
+              </StackPanel>
+
+              <StackPanel x:Name="AppxHiddenFilterPanel"
+                          Orientation="Horizontal"
+                          VerticalAlignment="Center"
+                          Visibility="Collapsed">
+                <CheckBox x:Name="AppxFilterHiddenCheck" IsEnabled="False" VerticalAlignment="Center" Margin="0,0,7,0"/>
+                <Ellipse Width="8" Height="8" Fill="#7D838C" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                <TextBlock x:Name="AppxLegendHidden" Text="Masqués : afficher les applications masquées" Foreground="{DynamicResource MutedBrush}" FontSize="11" VerticalAlignment="Center"/>
+              </StackPanel>
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Grid.Column="1" Width="190" VerticalAlignment="Top">
+            <Button x:Name="AppxScanButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Analyser" HorizontalAlignment="Stretch"/>
+            <Button x:Name="AppxSelectRecommendedButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Sélectionner recommandés" Margin="0,7,0,0" IsEnabled="False" HorizontalAlignment="Stretch"/>
+            <Button x:Name="AppxSelectOptionalButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Sélectionner optionnels" Margin="0,7,0,0" IsEnabled="False" HorizontalAlignment="Stretch"/>
+            <Button x:Name="AppxSelectProtectedButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Sélectionner protégés" Margin="0,7,0,0" IsEnabled="False" HorizontalAlignment="Stretch"/>
+            <Button x:Name="AppxSelectHiddenButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Sélectionner masqués" Margin="0,7,0,0" IsEnabled="False" Visibility="Collapsed" HorizontalAlignment="Stretch"/>
+            <Button x:Name="AppxClearSelectionButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Tout décocher" Margin="0,7,0,0" IsEnabled="False" HorizontalAlignment="Stretch"/>
+          </StackPanel>
+        </Grid>
+      </Border>
+
+      <Grid x:Name="AppxTablePanel" Height="360" MinHeight="220" MaxHeight="1000">
+        <Border Background="{DynamicResource GridBrush}"
+                BorderBrush="{DynamicResource CardBorderBrush}"
+                BorderThickness="1"
+                CornerRadius="{DynamicResource AppCornerRadius}"
+                Padding="1">
+          <DataGrid x:Name="AppxGrid"
+                    BorderThickness="0"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False"
+                    CanUserDeleteRows="False"
+                    CanUserReorderColumns="False"
+                    SelectionMode="Extended"
+                    SelectionUnit="FullRow"
+                    RowStyle="{StaticResource AppxDataGridRowStyle}"
+                    AlternationCount="2"
+                    MinRowHeight="42"
+                    EnableRowVirtualization="True"
+                    VirtualizingPanel.IsVirtualizing="True"
+                    VirtualizingPanel.VirtualizationMode="Recycling"
+                    ScrollViewer.CanContentScroll="False"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <DataGrid.ContextMenu>
+              <ContextMenu x:Name="AppxContextMenu" Style="{StaticResource BackupContextMenuStyle}">
+                <MenuItem x:Name="AppxOpenLocationMenuItem" Style="{StaticResource BackupMenuItemStyle}" Header="Ouvrir l’emplacement"/>
+                <MenuItem x:Name="AppxDetailsMenuItem" Style="{StaticResource BackupMenuItemStyle}" Header="Détail"/>
+                <MenuItem x:Name="AppxStandaloneRemoveMenuItem" Style="{StaticResource BackupMenuItemStyle}" Header="Désinstaller cette application" Tag="Danger"/>
+                <MenuItem x:Name="AppxHideMenuItem" Style="{StaticResource BackupMenuItemStyle}" Header="Masquer"/>
+              </ContextMenu>
+            </DataGrid.ContextMenu>
+
+            <DataGrid.Columns>
+              <DataGridTemplateColumn x:Name="AppxStatusColumn" Header="" Width="34" IsReadOnly="True">
+                <DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                    <Grid>
+                      <Ellipse Width="9" Height="9" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Ellipse.Style>
+                          <Style TargetType="Ellipse">
+                            <Setter Property="Fill" Value="#EAA300"/>
+                            <Style.Triggers>
+                              <DataTrigger Binding="{Binding Indicator}" Value="Green"><Setter Property="Fill" Value="#4CC38A"/></DataTrigger>
+                              <DataTrigger Binding="{Binding Indicator}" Value="Red"><Setter Property="Fill" Value="#D13438"/></DataTrigger>
+                            </Style.Triggers>
+                          </Style>
+                        </Ellipse.Style>
+                      </Ellipse>
+                    </Grid>
+                  </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+              </DataGridTemplateColumn>
+
+              <DataGridTemplateColumn x:Name="AppxSelectColumn" Header="" Width="42">
+                <DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                    <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              IsHitTestVisible="{Binding CanToggle}"
+                              Focusable="{Binding CanToggle}"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"/>
+                  </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+              </DataGridTemplateColumn>
+
+              <DataGridTemplateColumn x:Name="AppxNameColumn" Header="Application" Width="0.9*" IsReadOnly="True">
+                <DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                    <StackPanel VerticalAlignment="Center" Margin="4,2,10,2">
+                      <TextBlock Text="{Binding DisplayName}" Foreground="{DynamicResource TextBrush}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis"/>
+                      <TextBlock Text="{Binding PackageName}" FontSize="10" TextTrimming="CharacterEllipsis">
+                        <TextBlock.Style>
+                          <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="{DynamicResource SubtleTextBrush}"/>
+                            <Style.Triggers>
+                              <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=DataGridRow}}" Value="True">
+                                <Setter Property="Foreground" Value="#FFFFFF"/>
+                              </DataTrigger>
+                            </Style.Triggers>
+                          </Style>
+                        </TextBlock.Style>
+                      </TextBlock>
+                    </StackPanel>
+                  </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+              </DataGridTemplateColumn>
+
+              <DataGridTemplateColumn x:Name="AppxDescriptionColumn" Header="Description" Width="1.35*" IsReadOnly="True">
+                <DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                    <TextBlock Text="{Binding Description}"
+                               FontSize="11"
+                               TextWrapping="Wrap"
+                               TextTrimming="None"
+                               VerticalAlignment="Center"
+                               Margin="10,4,8,4">
+                      <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                          <Setter Property="Foreground" Value="{DynamicResource MutedBrush}"/>
+                          <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=DataGridRow}}" Value="True">
+                              <Setter Property="Foreground" Value="#FFFFFF"/>
+                            </DataTrigger>
+                          </Style.Triggers>
+                        </Style>
+                      </TextBlock.Style>
+                    </TextBlock>
+                  </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+              </DataGridTemplateColumn>
+            </DataGrid.Columns>
+          </DataGrid>
+        </Border>
+
+      </Grid>
+
+      <Grid Margin="0,9,0,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="AppxStatusText" Text="Cliquez sur « Analyser » pour lancer l’analyse." Foreground="{DynamicResource MutedBrush}" VerticalAlignment="Center" TextWrapping="Wrap" Margin="1,0,14,0"/>
+        <CheckBox x:Name="AppxRemoveUserDataCheck" Grid.Column="1" Content="Supprimer aussi les données utilisateur" VerticalAlignment="Center" Margin="0,0,12,0" IsEnabled="False"/>
+        <Button x:Name="AppxRemoveButton" Grid.Column="2" Style="{StaticResource DangerHoverButtonStyle}" Content="Supprimer la sélection" IsEnabled="False"/>
+      </Grid>
+
+      <Border Style="{StaticResource CardStyle}" Margin="0,10,0,0">
+        <StackPanel>
+          <TextBlock x:Name="AppxLogTitle" Text="Journal AppX" Foreground="{DynamicResource CardTitleBrush}" FontWeight="SemiBold" FontSize="14"/>
+
+          <Grid x:Name="AppxLogPanel" Height="180" Margin="0,8,0,0">
+            <Grid>
+              <RichTextBox x:Name="AppxLogBox"
+                       Style="{StaticResource LogRichTextBoxStyle}"
+                       Height="Auto"
+                       MinHeight="100"
+                       IsReadOnly="True"
+                       VerticalContentAlignment="Top"
+                       VerticalScrollBarVisibility="Auto"
+                       HorizontalScrollBarVisibility="Auto"
+                       FontFamily="Consolas"
+                       FontSize="11"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch">
+                <FlowDocument PagePadding="0" FontFamily="Consolas" FontSize="11"><Paragraph Margin="0"/></FlowDocument>
+              </RichTextBox>
+
+              <Canvas x:Name="AppxLogCustomScrollTrack"
+                      Width="9"
+                      HorizontalAlignment="Right"
+                      Margin="0,1,1,10"
+                      Background="Transparent"
+                      Visibility="Collapsed"
+                      Panel.ZIndex="4">
+                <Thumb x:Name="AppxLogCustomScrollThumb"
+                       Style="{StaticResource ScrollThumbStyle}"
+                       Width="9"
+                       Height="24"
+                       Canvas.Left="0"
+                       Canvas.Top="0"/>
+              </Canvas>
+            </Grid>
+          </Grid>
+
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,7,0,0">
+            <Button x:Name="ExportAppxLogButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Exporter le journal" Margin="0,0,7,0"/>
+            <Button x:Name="OpenAppxLogButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Ouvrir le fichier" Margin="0,0,7,0"/>
+            <Button x:Name="OpenAppxLogFolderButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Ouvrir le dossier" Margin="0,0,7,0"/>
+            <Button x:Name="AppxClearLogButton" Style="{StaticResource DangerHoverButtonStyle}" Content="Vider le journal"/>
+          </StackPanel>
+        </StackPanel>
+      </Border>
+      <TextBlock x:Name="DebloatCleanupTitle" Text="Nettoyage" FontSize="16" FontWeight="SemiBold" Margin="0,18,0,10"/>
+      <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10"><StackPanel>
+        <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><StackPanel><TextBlock x:Name="BingSearchTitle" Foreground="{DynamicResource CardTitleBrush}" Text="Désactiver Bing dans la recherche Windows" FontWeight="SemiBold" FontSize="14"/><TextBlock x:Name="BingSearchHint" Text="Retire les résultats et suggestions web de la recherche Windows." Foreground="{DynamicResource MutedBrush}" FontSize="12" Margin="0,3,20,0"/></StackPanel><ToggleButton x:Name="BingSearchToggle" Grid.Column="1" Style="{StaticResource SwitchToggleStyle}" VerticalAlignment="Center"/></Grid>
+        <Separator Background="{DynamicResource ControlBorderBrush}" Opacity="0.5" Margin="0,10"/>
+        <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><StackPanel><TextBlock x:Name="SponsoredAppsTitle" Foreground="{DynamicResource CardTitleBrush}" Text="Empêcher le retour des applications sponsorisées" FontWeight="SemiBold" FontSize="14"/><TextBlock x:Name="SponsoredAppsHint" Text="Bloque les expériences grand public qui réinstallent ou suggèrent des applications." Foreground="{DynamicResource MutedBrush}" FontSize="12" Margin="0,3,20,0"/></StackPanel><ToggleButton x:Name="SponsoredAppsToggle" Grid.Column="1" Style="{StaticResource SwitchToggleStyle}" VerticalAlignment="Center"/></Grid>
+        <Separator Background="{DynamicResource ControlBorderBrush}" Opacity="0.5" Margin="0,10"/>
+        <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><StackPanel><TextBlock x:Name="SuggestionsTitle" Foreground="{DynamicResource CardTitleBrush}" Text="Désactiver les suggestions et installations silencieuses" FontWeight="SemiBold" FontSize="14"/><TextBlock x:Name="SuggestionsHint" Text="Désactive les contenus suggérés et les installations automatiques liées au compte." Foreground="{DynamicResource MutedBrush}" FontSize="12" Margin="0,3,20,0"/></StackPanel><ToggleButton x:Name="SuggestionsToggle" Grid.Column="1" Style="{StaticResource SwitchToggleStyle}" VerticalAlignment="Center"/></Grid>
+      </StackPanel></Border>
+      <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+        <StackPanel>
+          <Grid>
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock x:Name="CleanupLogTitle" Text="Journal du nettoyage Windows" FontWeight="SemiBold" VerticalAlignment="Center"/>
+            <WrapPanel Grid.Column="1" HorizontalAlignment="Right">
+              <Button x:Name="ExportCleanupLogButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Exporter" Margin="0,0,7,0"/>
+              <Button x:Name="OpenCleanupLogButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Ouvrir le fichier" Margin="0,0,7,0"/>
+              <Button x:Name="OpenCleanupLogFolderButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Ouvrir le dossier" Margin="0,0,7,0"/>
+              <Button x:Name="ClearCleanupLogButton" Style="{StaticResource DangerHoverButtonStyle}" Content="Vider"/>
+            </WrapPanel>
+          </Grid>
+          <RichTextBox x:Name="CleanupOutputBox" Style="{StaticResource LogRichTextBoxStyle}" Height="145" Margin="0,8,0,0" IsReadOnly="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" FontSize="12"><FlowDocument PagePadding="0" FontFamily="Consolas" FontSize="12"><Paragraph Margin="0"/></FlowDocument></RichTextBox>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</Grid>

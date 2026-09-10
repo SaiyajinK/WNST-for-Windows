@@ -1,0 +1,46 @@
+<Grid x:Name="ApplicationsPage" Visibility="Collapsed" Style="{StaticResource SoftwarePageRootStyle}">
+  <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+
+  <Grid Style="{StaticResource SoftwareFixedContentStyle}">
+    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+    <StackPanel VerticalAlignment="Center">
+      <TextBlock x:Name="ApplicationsTitle" Text="Applications" FontSize="24" FontWeight="SemiBold" Foreground="{DynamicResource AccentBrush}" Margin="0,10,0,0"/>
+      <TextBlock x:Name="ApplicationsSubtitle" Text="Applications utiles, périphériques et redistribuables." Foreground="{DynamicResource MutedBrush}" Margin="0,3,0,0"/>
+    </StackPanel>
+    <Button x:Name="ApplicationsOpenDownloadsButton" Grid.Column="1" Style="{StaticResource AccentHoverButtonStyle}" VerticalAlignment="Center" Visibility="Collapsed" Content="Ouvrir les téléchargements"/>
+  </Grid>
+
+  <Border x:Name="ApplicationsProgressCard" Grid.Row="1" Style="{StaticResource SoftwareStickyCardStyle}">
+    <StackPanel>
+      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><StackPanel><TextBlock x:Name="ApplicationsProgressTitle" Text="Progression" FontWeight="SemiBold" Foreground="{DynamicResource CardTitleBrush}"/><TextBlock x:Name="ApplicationsProgressStatus" Text="Prêt" Foreground="{DynamicResource MutedBrush}" Margin="0,3,0,0"/></StackPanel><TextBlock x:Name="ApplicationsProgressPercent" Grid.Column="1" Text="0 %" FontWeight="SemiBold" VerticalAlignment="Center"/><Button x:Name="ApplicationsClearProgressButton" Grid.Column="2" Width="28" Height="28" Padding="0" Margin="9,0,0,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False" Style="{StaticResource AccentHoverButtonStyle}"><Viewbox Width="15" Height="15"><Path Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.35" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" Data="M13.5,1.5 L7.2,7.8 M6.1,6.8 L9,9.7 L6.5,13.5 L2,14 L2.5,9.5 Z M4.2,9.8 L7,12.6"/></Viewbox></Button></Grid>
+      <ProgressBar x:Name="ApplicationsProgressBar" Style="{StaticResource RoundedProgressBarStyle}" Height="7" Minimum="0" Maximum="100" Value="0" Margin="0,10,0,0"/>
+      <TextBlock x:Name="ApplicationsProgressDetails" Foreground="{DynamicResource MutedBrush}" Margin="0,6,0,0" TextTrimming="CharacterEllipsis"/>
+    </StackPanel>
+  </Border>
+
+  <ScrollViewer x:Name="ApplicationsCatalogScrollViewer" Grid.Row="2" Margin="0,0,-18,0" Style="{StaticResource SoftwarePageScrollViewerStyle}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+    <Grid Style="{StaticResource SoftwarePageScrollContentStyle}" Margin="0,10,0,0">
+      <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="10"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="10"/><RowDefinition Height="Auto"/><RowDefinition Height="10"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+
+      <Border x:Name="ApplicationsAppsCard" Grid.ColumnSpan="3" Style="{StaticResource CardStyle}">
+        <Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions><TextBlock x:Name="ApplicationsAppsTitle" Text="Apps" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource CardTitleBrush}" Margin="0,0,0,8"/><Grid Grid.Row="1"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="18"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><StackPanel x:Name="ApplicationsAppsLeftPanel"/><StackPanel x:Name="ApplicationsAppsRightPanel" Grid.Column="2"/></Grid></Grid>
+      </Border>
+
+      <Border Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource CardStyle}">
+        <Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions><TextBlock x:Name="ApplicationsManufacturersTitle" Text="Constructeurs &amp; périphériques" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource CardTitleBrush}" Margin="0,0,0,8"/><Grid Grid.Row="1"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="18"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><StackPanel x:Name="ApplicationsManufacturersLeftPanel"/><StackPanel x:Name="ApplicationsManufacturersRightPanel" Grid.Column="2"/></Grid></Grid>
+      </Border>
+
+      <Border Grid.Row="4" Grid.ColumnSpan="3" Style="{StaticResource CardStyle}">
+        <StackPanel>
+          <TextBlock x:Name="ApplicationsMiscTitle" Text="Divers · Redistribuables Windows" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource CardTitleBrush}" Margin="0,0,0,8"/>
+          <StackPanel x:Name="ApplicationsMiscPanel"/>
+        </StackPanel>
+      </Border>
+    </Grid>
+  </ScrollViewer>
+
+    <Border x:Name="ApplicationsLogCard" Grid.Row="3" Style="{StaticResource SoftwareStickyCardStyle}" Margin="0,10,0,10">
+    <Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="125"/></Grid.RowDefinitions><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock x:Name="ApplicationsLogTitle" Text="Journal PowerShell Applications" FontWeight="SemiBold" Foreground="{DynamicResource CardTitleBrush}" VerticalAlignment="Center"/><StackPanel Grid.Column="1" Orientation="Horizontal"><Button x:Name="ApplicationsExportLogButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Exporter"/><Button x:Name="ApplicationsOpenLogButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Ouvrir le fichier" Margin="7,0,0,0"/><Button x:Name="ApplicationsClearLogButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Vider le journal" Margin="7,0,0,0"/></StackPanel></Grid><RichTextBox x:Name="ApplicationsLogBox" Grid.Row="1" Style="{StaticResource LogRichTextBoxStyle}" IsReadOnly="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" FontFamily="Consolas" FontSize="11" Margin="0,9,0,0"/></Grid>
+  </Border>
+</Grid>

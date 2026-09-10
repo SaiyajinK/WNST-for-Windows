@@ -1,0 +1,181 @@
+<Grid x:Name="ThisPcPage" Visibility="Collapsed" Style="{StaticResource ScrollablePageContentStyle}">
+  <Grid.RowDefinitions>
+    <RowDefinition Height="Auto"/>
+    <RowDefinition Height="*"/>
+  </Grid.RowDefinitions>
+
+  <Grid Style="{StaticResource PageHeaderContentStyle}">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <StackPanel VerticalAlignment="Center">
+      <TextBlock x:Name="ThisPcTitle" Text="Ce PC" FontSize="24" FontWeight="SemiBold" Foreground="{DynamicResource AccentBrush}" Margin="0,10,0,0"/>
+      <TextBlock x:Name="ThisPcSubtitle" Text="Vue d’ensemble claire du matériel et de Windows." Foreground="{DynamicResource MutedBrush}" Margin="0,3,0,0"/>
+    </StackPanel>
+    <StackPanel x:Name="ThisPcHeaderActions" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,22,0">
+      <Button x:Name="CopySpecsButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Copier" Margin="0,0,7,0"/>
+      <Button x:Name="RefreshSpecsButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Actualiser"/>
+    </StackPanel>
+  </Grid>
+
+  <ScrollViewer Grid.Row="1" Style="{StaticResource PageScrollViewerStyle}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,-12,0">
+    <Grid Style="{StaticResource PageScrollContentStyle}" Margin="0,14,0,0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="10"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="10"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="10"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="10"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="10"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <Border x:Name="PcOverviewCard" Grid.ColumnSpan="3" Style="{StaticResource ClickableCardStyle}" Cursor="Hand">
+        <StackPanel VerticalAlignment="Center">
+          <TextBlock Foreground="{DynamicResource CardTitleBrush}" x:Name="PcOverviewTitle" Text="Système" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,9"/>
+          <Grid>
+            <Grid.ColumnDefinitions><ColumnDefinition Width="150"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+            <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/></Grid.RowDefinitions>
+            <TextBlock x:Name="ComputerNameLabel" Text="Nom du PC" Foreground="{DynamicResource MutedBrush}" Margin="0,3" VerticalAlignment="Center"/>
+            <Grid Grid.Column="1" MinHeight="32" VerticalAlignment="Center">
+              <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+              <TextBlock x:Name="ComputerNameValue" FontWeight="SemiBold" VerticalAlignment="Center"/>
+              <Button x:Name="RenameComputerButton" Grid.Column="1" Style="{StaticResource AccentHoverButtonStyle}" Cursor="Arrow" Content="Renommer" Padding="10,2" Margin="8,0,0,0" VerticalAlignment="Center"/>
+            </Grid>
+            <TextBlock x:Name="OperatingSystemLabel" Grid.Row="1" Text="OS" Foreground="{DynamicResource MutedBrush}" Margin="0,3"/>
+            <TextBlock x:Name="OperatingSystemValue" Grid.Row="1" Grid.Column="1" FontWeight="SemiBold" Margin="0,3"/>
+            <TextBlock x:Name="BuildLabel" Grid.Row="2" Text="Build" Foreground="{DynamicResource MutedBrush}" Margin="0,3"/>
+            <TextBlock x:Name="BuildValue" Grid.Row="2" Grid.Column="1" FontWeight="SemiBold" Margin="0,3"/>
+            <TextBlock x:Name="SystemTypeLabel" Grid.Row="3" Text="Type du système" Foreground="{DynamicResource MutedBrush}" Margin="0,3"/>
+            <TextBlock x:Name="SystemTypeValue" Grid.Row="3" Grid.Column="1" FontWeight="SemiBold" Margin="0,3"/>
+            <TextBlock x:Name="UptimeLabel" Grid.Row="4" Text="Durée de fonctionnement" Foreground="{DynamicResource MutedBrush}" Margin="0,3"/>
+            <TextBlock x:Name="UptimeValue" Grid.Row="4" Grid.Column="1" FontWeight="SemiBold" Margin="0,3"/>
+          </Grid>
+        </StackPanel>
+      </Border>
+
+      <Border x:Name="ProcessorCard" Grid.Row="2" Style="{StaticResource ClickableCardStyle}" Cursor="Hand">
+        <StackPanel VerticalAlignment="Center">
+          <TextBlock Foreground="{DynamicResource CardTitleBrush}" x:Name="ProcessorTitle" Text="Processeur" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,9"/>
+          <TextBlock x:Name="ProcessorValue" FontWeight="SemiBold" TextWrapping="Wrap"/>
+          <TextBlock x:Name="ProcessorDetailsValue" Foreground="{DynamicResource MutedBrush}" Margin="0,5,0,0" TextWrapping="Wrap"/>
+        </StackPanel>
+      </Border>
+
+      <Border x:Name="MemoryCard" Grid.Row="2" Grid.Column="2" Style="{StaticResource ClickableCardStyle}" Cursor="Hand">
+        <StackPanel VerticalAlignment="Center">
+          <TextBlock Foreground="{DynamicResource CardTitleBrush}" x:Name="MemoryTitle" Text="Mémoire" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,9"/>
+          <TextBlock x:Name="MemoryValue" FontWeight="SemiBold"/>
+          <TextBlock x:Name="MemoryDetailsValue" Foreground="{DynamicResource MutedBrush}" Margin="0,5,0,0" TextWrapping="Wrap"/>
+        </StackPanel>
+      </Border>
+
+      <Border x:Name="GraphicsCard" Grid.Row="4" Style="{StaticResource ClickableCardStyle}" Cursor="Hand">
+        <StackPanel VerticalAlignment="Center">
+          <TextBlock Foreground="{DynamicResource CardTitleBrush}" x:Name="GraphicsTitle" Text="Graphiques" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,9"/>
+          <TextBlock x:Name="GraphicsValue" FontWeight="SemiBold" TextWrapping="Wrap"/>
+          <TextBlock x:Name="GraphicsDetailsValue" Foreground="{DynamicResource MutedBrush}" Margin="0,5,0,0" TextWrapping="Wrap"/>
+        </StackPanel>
+      </Border>
+
+      <Border x:Name="MotherboardCard" Grid.Row="4" Grid.Column="2" Style="{StaticResource ClickableCardStyle}" Cursor="Hand">
+        <StackPanel VerticalAlignment="Center">
+          <TextBlock Foreground="{DynamicResource CardTitleBrush}" x:Name="MotherboardTitle" Text="Carte mère" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,9"/>
+          <TextBlock x:Name="MotherboardModelValue" FontWeight="SemiBold" TextWrapping="Wrap"/>
+          <TextBlock x:Name="MotherboardManufacturerValue" FontSize="12" Foreground="{DynamicResource MutedBrush}" Margin="0,5,0,0" TextWrapping="Wrap"/>
+          <TextBlock x:Name="MotherboardBiosValue" FontSize="12" Foreground="{DynamicResource MutedBrush}" Margin="0,3,0,0" TextWrapping="Wrap"/>
+          <TextBlock x:Name="MotherboardValue" Visibility="Collapsed"/>
+        </StackPanel>
+      </Border>
+
+      <Border x:Name="StorageCard" Grid.Row="6" Style="{StaticResource CardStyle}">
+        <StackPanel VerticalAlignment="Center">
+          <TextBlock Foreground="{DynamicResource CardTitleBrush}" x:Name="StorageTitle" Text="Stockage" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,9"/>
+          <Grid x:Name="StorageDisksPanel"/>
+          <TextBlock x:Name="StorageValue" Visibility="Collapsed"/>
+        </StackPanel>
+      </Border>
+
+      <Border x:Name="NetworkInfoCard" Grid.Row="6" Grid.Column="2" Style="{StaticResource ClickableCardStyle}" Cursor="Hand">
+        <StackPanel VerticalAlignment="Center">
+          <TextBlock Foreground="{DynamicResource CardTitleBrush}" x:Name="NetworkInfoTitle" Text="Réseau" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,9"/>
+          <TextBlock x:Name="NetworkAdapterValue" FontSize="14" FontWeight="SemiBold" TextWrapping="Wrap"/>
+          <TextBlock x:Name="NetworkDetailsValue" FontSize="12" Foreground="{DynamicResource MutedBrush}" Margin="0,5,0,0" TextWrapping="Wrap"/>
+        </StackPanel>
+      </Border>
+
+      <Border x:Name="DisplayCard" Grid.Row="8" Style="{StaticResource CardStyle}">
+        <StackPanel>
+          <TextBlock x:Name="DisplayTitle" Text="Affichage" Foreground="{DynamicResource CardTitleBrush}" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,9"/>
+          <TextBlock x:Name="DisplayEmptyText" Text="Aucun moniteur détecté." Foreground="{DynamicResource MutedBrush}" Visibility="Collapsed"/>
+          <StackPanel x:Name="DisplayContentPanel" Visibility="Collapsed">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,9,0,10">
+              <TextBlock x:Name="DisplayRoleText" VerticalAlignment="Center" Margin="0,0,12,0" FontStyle="Italic" FontWeight="SemiBold"/>
+              <TextBlock x:Name="DisplayCounterText" VerticalAlignment="Center" Foreground="{DynamicResource MutedBrush}"/>
+            </StackPanel>
+
+            <TextBlock x:Name="DisplayMonitorName" FontWeight="SemiBold" TextWrapping="Wrap"/>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,10">
+              <TextBlock x:Name="DisplayConnectionLabel" Text="Connectique :" Foreground="{DynamicResource MutedBrush}"/>
+              <TextBlock x:Name="DisplayConnectionValue" Margin="5,0,0,0"/>
+            </StackPanel>
+
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="DisplayLabelColumn" Width="95"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="Auto"/>
+              </Grid.RowDefinitions>
+
+              <TextBlock x:Name="DisplayResolutionLabel" Text="Résolution" VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,8,0" Foreground="{DynamicResource MutedBrush}"/>
+              <Grid x:Name="DisplayResolutionControls" Grid.Column="1">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="8"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <ComboBox x:Name="DisplayResolutionCombo" DisplayMemberPath="Name"/>
+                <Button x:Name="DisplayApplyResolutionButton" Grid.Column="2" MinWidth="82" Style="{StaticResource AccentHoverButtonStyle}" Content="Appliquer"/>
+              </Grid>
+
+              <TextBlock x:Name="DisplayRefreshLabel" Grid.Row="2" Text="Fréquence" VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,8,0" Foreground="{DynamicResource MutedBrush}"/>
+              <Grid x:Name="DisplayRefreshControls" Grid.Row="2" Grid.Column="1">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="8"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <ComboBox x:Name="DisplayRefreshCombo" DisplayMemberPath="Name"/>
+                <Button x:Name="DisplayApplyRefreshButton" Grid.Column="2" MinWidth="82" Style="{StaticResource AccentHoverButtonStyle}" Content="Appliquer"/>
+              </Grid>
+
+              <TextBlock x:Name="DisplayScalingLabel" Grid.Row="4" Text="Mise à l’échelle" VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,8,0" Foreground="{DynamicResource MutedBrush}"/>
+              <Grid x:Name="DisplayScalingControls" Grid.Row="4" Grid.Column="1">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="8"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <ComboBox x:Name="DisplayScalingCombo" DisplayMemberPath="Name"/>
+                <Button x:Name="DisplayApplyScalingButton" Grid.Column="2" MinWidth="82" Style="{StaticResource AccentHoverButtonStyle}" Content="Appliquer"/>
+              </Grid>
+            </Grid>
+
+            <Grid HorizontalAlignment="Center" Margin="0,12,0,0">
+              <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+              <Button x:Name="DisplayPreviousButton" Style="{StaticResource DisplayCarouselButtonStyle}" Margin="0,0,4,0">
+                <Path Width="7" Height="12" Stretch="Fill" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.6" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" Data="M 7,1 L 2,6 L 7,11"/>
+              </Button>
+              <StackPanel x:Name="DisplayIndicatorsPanel" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+              <Button x:Name="DisplayNextButton" Grid.Column="2" Style="{StaticResource DisplayCarouselButtonStyle}" Margin="4,0,0,0">
+                <Path Width="7" Height="12" Stretch="Fill" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.6" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" Data="M 2,1 L 7,6 L 2,11"/>
+              </Button>
+            </Grid>
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </Grid>
+  </ScrollViewer>
+</Grid>

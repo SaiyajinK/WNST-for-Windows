@@ -1,0 +1,632 @@
+﻿<Window.Resources>
+    <CornerRadius x:Key="AppCornerRadius">5</CornerRadius>
+    <sys:Double x:Key="AppCornerRadiusValue">5</sys:Double>
+    <CornerRadius x:Key="AppTopCornerRadius">5,5,0,0</CornerRadius>
+    <SolidColorBrush x:Key="WindowBrush" Color="#191C21"/>
+    <SolidColorBrush x:Key="WindowBorderBrush" Color="#59616B"/>
+    <SolidColorBrush x:Key="SidebarBrush" Color="#171A1F"/>
+    <SolidColorBrush x:Key="TitleBarBrush" Color="#20242B"/>
+    <SolidColorBrush x:Key="StatusBarBrush" Color="#171A1F"/>
+    <SolidColorBrush x:Key="CardBrush" Color="#252930"/>
+    <SolidColorBrush x:Key="ClickableCardHoverBrush" Color="#30353D"/>
+    <SolidColorBrush x:Key="AboutCardHoverBrush" Color="#2C3139"/>
+    <SolidColorBrush x:Key="CardBorderBrush" Color="#3B414A"/>
+    <SolidColorBrush x:Key="ProgressTrackBrush" Color="#20242B"/>
+    <SolidColorBrush x:Key="InputBrush" Color="#20242B"/>
+    <SolidColorBrush x:Key="ComboBrush" Color="#20242B"/>
+    <SolidColorBrush x:Key="ComboHoverBrush" Color="#3A4049"/>
+    <LinearGradientBrush x:Key="InputInnerShadowBrush" StartPoint="0,0" EndPoint="0,1">
+      <GradientStop Color="#59000000" Offset="0"/>
+      <GradientStop Color="#59000000" Offset="0.30"/>
+      <GradientStop Color="#00000000" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="TextBrush" Color="#F4F4F4"/>
+    <SolidColorBrush x:Key="MutedBrush" Color="#A8ADB5"/>
+    <SolidColorBrush x:Key="SubtleTextBrush" Color="#7F8690"/>
+    <SolidColorBrush x:Key="ControlBrush" Color="#30353D"/>
+    <SolidColorBrush x:Key="ControlHoverBrush" Color="#3A4049"/>
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="#555C66"/>
+    <SolidColorBrush x:Key="NavTextBrush" Color="#DDE1E6"/>
+    <SolidColorBrush x:Key="NavHoverBrush" Color="#292E35"/>
+    <SolidColorBrush x:Key="NavSelectedBrush" Color="#31363E"/>
+    <SolidColorBrush x:Key="SidebarToggleHoverBrush" Color="#3A4049"/>
+    <SolidColorBrush x:Key="TitleButtonHoverBrush" Color="#3A4049"/>
+    <SolidColorBrush x:Key="GridBrush" Color="#20242B"/>
+    <SolidColorBrush x:Key="GridAlternateBrush" Color="#23272E"/>
+    <SolidColorBrush x:Key="SeparatorBrush" Color="#343941"/>
+    <SolidColorBrush x:Key="ScrollThumbBrush" Color="#59616B"/>
+    <SolidColorBrush x:Key="ScrollThumbHoverBrush" Color="#747D88"/>
+    <SolidColorBrush x:Key="CardTextBrush" Color="#F4F4F4"/>
+    <SolidColorBrush x:Key="CardTitleBrush" Color="#F4F4F4"/>
+    <SolidColorBrush x:Key="AccentBrush" Color="#1A9FFF"/>
+    <SolidColorBrush x:Key="AccentHalfBrush" Color="#801A9FFF"/>
+    <SolidColorBrush x:Key="AccentTextBrush" Color="#FFFFFF"/>
+    <Style TargetType="ToolTip">
+      <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Padding" Value="9,5"/>
+      <Setter Property="HasDropShadow" Value="False"/>
+      <Setter Property="OverridesDefaultStyle" Value="True"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="ToolTip">
+            <Border Background="{DynamicResource CardBrush}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{DynamicResource AppCornerRadius}"
+                    Padding="{TemplateBinding Padding}"
+                    SnapsToDevicePixels="True">
+              <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}"
+                                TextElement.FontFamily="{TemplateBinding FontFamily}"
+                                TextElement.FontSize="{TemplateBinding FontSize}"
+                                TextElement.FontWeight="{TemplateBinding FontWeight}"/>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <DataTemplate x:Key="Flag_sa">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#006C35"/><Path Data="M5 7 H24 M6 8.7 H22 M9 5.2 V10.2 M13 5.7 V9.6 M17 5.2 V10.1 M21 5.7 V9.2" Stroke="#fff" StrokeThickness="0.75"/><Path Data="M7 14.3 C13 15.1 19 15.1 24 13.8 M23.8 13.8 L25.6 13.1" Stroke="#fff" StrokeThickness="0.8"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_bg">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="6.666666666666667" Width="30" Height="6.666666666666667" Fill="#00966E"/><Rectangle Canvas.Left="0" Canvas.Top="13.333333333333334" Width="30" Height="6.666666666666667" Fill="#D62612"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_cz">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="10" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="10" Width="30" Height="10" Fill="#D7141A"/><Polygon Points="0,0 13,10 0,20" Fill="#11457E"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_dk">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#C60C30"/><Rectangle Canvas.Left="9" Canvas.Top="0" Width="3" Height="20" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="8.5" Width="30" Height="3" Fill="#fff"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_de">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="6.666666666666667" Fill="#000"/><Rectangle Canvas.Left="0" Canvas.Top="6.666666666666667" Width="30" Height="6.666666666666667" Fill="#DD0000"/><Rectangle Canvas.Left="0" Canvas.Top="13.333333333333334" Width="30" Height="6.666666666666667" Fill="#FFCE00"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_gr">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#0D5EAF"/><Rectangle Canvas.Left="0" Canvas.Top="2.2222222222222223" Width="30" Height="2.2222222222222223" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="6.666666666666667" Width="30" Height="2.2222222222222223" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="11.11111111111111" Width="30" Height="2.2222222222222223" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="15.555555555555557" Width="30" Height="2.2222222222222223" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="0" Width="11.1" Height="11.1" Fill="#0D5EAF"/><Rectangle Canvas.Left="4.45" Canvas.Top="0" Width="2.2" Height="11.1" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="4.45" Width="11.1" Height="2.2" Fill="#fff"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_gb">
+      <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="30" Height="20" Stretch="Fill">
+        <Canvas Width="30" Height="20">
+          <Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Width="30" Height="20" Fill="#012169"/>
+          <Path Data="M0,0 L3.4,0 L30,17.73 L30,20 L26.6,20 L0,2.27 Z" Fill="#FFFFFF"/>
+          <Path Data="M30,0 L26.6,0 L0,17.73 L0,20 L3.4,20 L30,2.27 Z" Fill="#FFFFFF"/>
+          <Path Data="M0,0 L1.7,0 L12.75,7.37 L10.2,7.37 Z" Fill="#C8102E"/>
+          <Path Data="M30,0 L28.3,0 L17.25,7.37 L19.8,7.37 Z" Fill="#C8102E"/>
+          <Path Data="M0,20 L1.7,20 L12.75,12.63 L10.2,12.63 Z" Fill="#C8102E"/>
+          <Path Data="M30,20 L28.3,20 L17.25,12.63 L19.8,12.63 Z" Fill="#C8102E"/>
+          <Rectangle Canvas.Top="7" Width="30" Height="6" Fill="#FFFFFF"/>
+          <Rectangle Canvas.Left="12" Width="6" Height="20" Fill="#FFFFFF"/>
+          <Rectangle Canvas.Top="8.5" Width="30" Height="3" Fill="#C8102E"/>
+          <Rectangle Canvas.Left="13.5" Width="3" Height="20" Fill="#C8102E"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_mx">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="10" Height="20" Fill="#006847"/><Rectangle Canvas.Left="10" Canvas.Top="0" Width="10" Height="20" Fill="#fff"/><Rectangle Canvas.Left="20" Canvas.Top="0" Width="10" Height="20" Fill="#CE1126"/><Ellipse Canvas.Left="13.5" Canvas.Top="8.5" Width="3.0" Height="3.0" Fill="#7A5B2E"/><Path Data="M13.3 12 C14 13.2 16 13.2 16.7 12" Stroke="#00843D" StrokeThickness="0.6"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_es">
+      <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="30" Height="20" Stretch="Fill">
+        <Canvas Width="30" Height="20">
+          <Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Width="30" Height="20" Fill="#AA151B"/>
+          <Rectangle Canvas.Top="5" Width="30" Height="10" Fill="#F1BF00"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_fi">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#fff"/><Rectangle Canvas.Left="8" Canvas.Top="0" Width="4" Height="20" Fill="#003580"/><Rectangle Canvas.Left="0" Canvas.Top="8" Width="30" Height="4" Fill="#003580"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_fr">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="10" Height="20" Fill="#0055A4"/><Rectangle Canvas.Left="10" Canvas.Top="0" Width="10" Height="20" Fill="#fff"/><Rectangle Canvas.Left="20" Canvas.Top="0" Width="10" Height="20" Fill="#EF4135"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_hu">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="6.666666666666667" Fill="#CE2939"/><Rectangle Canvas.Left="0" Canvas.Top="6.666666666666667" Width="30" Height="6.666666666666667" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="13.333333333333334" Width="30" Height="6.666666666666667" Fill="#477050"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_id">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="10" Fill="#FF0000"/><Rectangle Canvas.Left="0" Canvas.Top="10" Width="30" Height="10" Fill="#fff"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_it">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="10" Height="20" Fill="#009246"/><Rectangle Canvas.Left="10" Canvas.Top="0" Width="10" Height="20" Fill="#fff"/><Rectangle Canvas.Left="20" Canvas.Top="0" Width="10" Height="20" Fill="#CE2B37"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_jp">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#fff"/><Ellipse Canvas.Left="10.3" Canvas.Top="5.3" Width="9.4" Height="9.4" Fill="#BC002D"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_kr">
+      <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="30" Height="20" Stretch="Fill">
+        <Canvas Width="30" Height="20">
+          <Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Width="30" Height="20" Fill="#FFFFFF"/>
+          <Canvas RenderTransformOrigin="0,0">
+            <Canvas.RenderTransform>
+              <TransformGroup>
+                <RotateTransform Angle="33.6900675"/>
+                <TranslateTransform X="15" Y="10"/>
+              </TransformGroup>
+            </Canvas.RenderTransform>
+            <Path Data="M0,-4 A4,4 0 0 1 0,4 A2,2 0 0 1 0,0 A2,2 0 0 0 0,-4 Z" Fill="#CD2E3A"/>
+            <Path Data="M0,4 A4,4 0 0 1 0,-4 A2,2 0 0 1 0,0 A2,2 0 0 0 0,4 Z" Fill="#0047A0"/>
+          </Canvas>
+          <Canvas RenderTransformOrigin="0,0">
+            <Canvas.RenderTransform><TransformGroup><RotateTransform Angle="-34"/><TranslateTransform X="6.3" Y="5.2"/></TransformGroup></Canvas.RenderTransform>
+            <Rectangle Canvas.Left="-2.5" Canvas.Top="-1.95" Width="5" Height="0.7" Fill="#000"/>
+            <Rectangle Canvas.Left="-2.5" Canvas.Top="-0.35" Width="5" Height="0.7" Fill="#000"/>
+            <Rectangle Canvas.Left="-2.5" Canvas.Top="1.25" Width="5" Height="0.7" Fill="#000"/>
+          </Canvas>
+          <Canvas RenderTransformOrigin="0,0">
+            <Canvas.RenderTransform><TransformGroup><RotateTransform Angle="-34"/><TranslateTransform X="23.7" Y="14.8"/></TransformGroup></Canvas.RenderTransform>
+            <Rectangle Canvas.Left="-2.5" Canvas.Top="-1.95" Width="2" Height="0.7" Fill="#000"/><Rectangle Canvas.Left="0.5" Canvas.Top="-1.95" Width="2" Height="0.7" Fill="#000"/>
+            <Rectangle Canvas.Left="-2.5" Canvas.Top="-0.35" Width="2" Height="0.7" Fill="#000"/><Rectangle Canvas.Left="0.5" Canvas.Top="-0.35" Width="2" Height="0.7" Fill="#000"/>
+            <Rectangle Canvas.Left="-2.5" Canvas.Top="1.25" Width="2" Height="0.7" Fill="#000"/><Rectangle Canvas.Left="0.5" Canvas.Top="1.25" Width="2" Height="0.7" Fill="#000"/>
+          </Canvas>
+          <Canvas RenderTransformOrigin="0,0">
+            <Canvas.RenderTransform><TransformGroup><RotateTransform Angle="34"/><TranslateTransform X="23.7" Y="5.2"/></TransformGroup></Canvas.RenderTransform>
+            <Rectangle Canvas.Left="-2.5" Canvas.Top="-1.95" Width="2" Height="0.7" Fill="#000"/><Rectangle Canvas.Left="0.5" Canvas.Top="-1.95" Width="2" Height="0.7" Fill="#000"/>
+            <Rectangle Canvas.Left="-2.5" Canvas.Top="-0.35" Width="5" Height="0.7" Fill="#000"/>
+            <Rectangle Canvas.Left="-2.5" Canvas.Top="1.25" Width="2" Height="0.7" Fill="#000"/><Rectangle Canvas.Left="0.5" Canvas.Top="1.25" Width="2" Height="0.7" Fill="#000"/>
+          </Canvas>
+          <Canvas RenderTransformOrigin="0,0">
+            <Canvas.RenderTransform><TransformGroup><RotateTransform Angle="34"/><TranslateTransform X="6.3" Y="14.8"/></TransformGroup></Canvas.RenderTransform>
+            <Rectangle Canvas.Left="-2.5" Canvas.Top="-1.95" Width="5" Height="0.7" Fill="#000"/>
+            <Rectangle Canvas.Left="-2.5" Canvas.Top="-0.35" Width="2" Height="0.7" Fill="#000"/><Rectangle Canvas.Left="0.5" Canvas.Top="-0.35" Width="2" Height="0.7" Fill="#000"/>
+            <Rectangle Canvas.Left="-2.5" Canvas.Top="1.25" Width="5" Height="0.7" Fill="#000"/>
+          </Canvas>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_my">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="0.0" Width="30" Height="1.4285714285714286" Fill="#CC0001"/><Rectangle Canvas.Left="0" Canvas.Top="1.4285714285714286" Width="30" Height="1.4285714285714286" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="2.857142857142857" Width="30" Height="1.4285714285714286" Fill="#CC0001"/><Rectangle Canvas.Left="0" Canvas.Top="4.285714285714286" Width="30" Height="1.4285714285714286" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="5.714285714285714" Width="30" Height="1.4285714285714286" Fill="#CC0001"/><Rectangle Canvas.Left="0" Canvas.Top="7.142857142857143" Width="30" Height="1.4285714285714286" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="8.571428571428571" Width="30" Height="1.4285714285714286" Fill="#CC0001"/><Rectangle Canvas.Left="0" Canvas.Top="10.0" Width="30" Height="1.4285714285714286" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="11.428571428571429" Width="30" Height="1.4285714285714286" Fill="#CC0001"/><Rectangle Canvas.Left="0" Canvas.Top="12.857142857142858" Width="30" Height="1.4285714285714286" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="14.285714285714286" Width="30" Height="1.4285714285714286" Fill="#CC0001"/><Rectangle Canvas.Left="0" Canvas.Top="15.714285714285715" Width="30" Height="1.4285714285714286" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="17.142857142857142" Width="30" Height="1.4285714285714286" Fill="#CC0001"/><Rectangle Canvas.Left="0" Canvas.Top="18.571428571428573" Width="30" Height="1.4285714285714286" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="0" Width="15" Height="11.428571428571429" Fill="#010066"/><Ellipse Canvas.Left="3.1" Canvas.Top="2.6" Width="6.2" Height="6.2" Fill="#FFCC00"/><Ellipse Canvas.Left="4.6" Canvas.Top="3.0" Width="5.4" Height="5.4" Fill="#010066"/><Polygon Points="10.4,4.0 10.544505094511232,5.066881813829124 11.13760235649985,4.1683529245658875 10.804894277327062,5.192278635285262 11.72911352019565,4.640067336840153 10.985089182815832,5.418235899817058 12.057377450709101,5.3217144122742654 11.0494,5.7 12.057377450709101,6.078285587725735 10.985089182815832,5.981764100182942 11.72911352019565,6.759932663159848 10.804894277327062,6.207721364714739 11.13760235649985,7.231647075434113 10.544505094511232,6.333118186170877 10.4,7.4 10.255494905488769,6.333118186170877 9.662397643500151,7.231647075434113 9.995105722672939,6.207721364714739 9.07088647980435,6.759932663159847 9.81491081718417,5.981764100182943 8.7426225492909,6.078285587725734 9.7506,5.7 8.7426225492909,5.321714412274266 9.814910817184169,5.418235899817058 9.070886479804349,4.640067336840153 9.995105722672939,5.192278635285262 9.662397643500151,4.1683529245658875 10.25549490548877,5.066881813829124" Fill="#FFCC00"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_no">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#BA0C2F"/><Rectangle Canvas.Left="8" Canvas.Top="0" Width="5" Height="20" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="7.5" Width="30" Height="5" Fill="#fff"/><Rectangle Canvas.Left="9.5" Canvas.Top="0" Width="2" Height="20" Fill="#00205B"/><Rectangle Canvas.Left="0" Canvas.Top="9" Width="30" Height="2" Fill="#00205B"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_nl">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="6.666666666666667" Fill="#AE1C28"/><Rectangle Canvas.Left="0" Canvas.Top="6.666666666666667" Width="30" Height="6.666666666666667" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="13.333333333333334" Width="30" Height="6.666666666666667" Fill="#21468B"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_pl">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="10" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="10" Width="30" Height="10" Fill="#DC143C"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_br">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#009B3A"/><Polygon Points="15,2 27,10 15,18 3,10" Fill="#FFDF00"/><Ellipse Canvas.Left="9.7" Canvas.Top="4.7" Width="10.6" Height="10.6" Fill="#002776"/><Path Data="M10.4 9.2 C13.2 8.1 17.1 8.5 19.8 10.1" Stroke="#fff" StrokeThickness="0.7"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_pt">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="12" Height="20" Fill="#046A38"/><Rectangle Canvas.Left="12" Canvas.Top="0" Width="18" Height="20" Fill="#DA291C"/><Ellipse Canvas.Left="8.6" Canvas.Top="6.6" Width="6.8" Height="6.8"/><Path Data="M12 6.7 A3.3 3.3 0 1 0 12 13.3 A3.3 3.3 0 1 0 12 6.7" Stroke="#FFCC00" StrokeThickness="0.8"/><Rectangle Canvas.Left="10.6" Canvas.Top="8.2" Width="2.8" Height="3.6" Fill="#fff"/><Ellipse Canvas.Left="11.2" Canvas.Top="9.2" Width="1.6" Height="1.6" Fill="#0055A4"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_ro">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="10" Height="20" Fill="#002B7F"/><Rectangle Canvas.Left="10" Canvas.Top="0" Width="10" Height="20" Fill="#FCD116"/><Rectangle Canvas.Left="20" Canvas.Top="0" Width="10" Height="20" Fill="#CE1126"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_ru">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="6.666666666666667" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="6.666666666666667" Width="30" Height="6.666666666666667" Fill="#0039A6"/><Rectangle Canvas.Left="0" Canvas.Top="13.333333333333334" Width="30" Height="6.666666666666667" Fill="#D52B1E"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_se">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#006AA7"/><Rectangle Canvas.Left="9" Canvas.Top="0" Width="4" Height="20" Fill="#FECC00"/><Rectangle Canvas.Left="0" Canvas.Top="8" Width="30" Height="4" Fill="#FECC00"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_th">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#A51931"/><Rectangle Canvas.Left="0" Canvas.Top="3.3" Width="30" Height="3.3" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="6.6" Width="30" Height="6.8" Fill="#2D2A4A"/><Rectangle Canvas.Left="0" Canvas.Top="13.4" Width="30" Height="3.3" Fill="#fff"/><Rectangle Canvas.Left="0" Canvas.Top="16.7" Width="30" Height="3.3" Fill="#A51931"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_tr">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#E30A17"/><Ellipse Canvas.Left="7.0" Canvas.Top="5.0" Width="10.0" Height="10.0" Fill="#fff"/><Ellipse Canvas.Left="9.700000000000001" Canvas.Top="5.9" Width="8.2" Height="8.2" Fill="#E30A17"/><Polygon Points="18.1,8.0 18.549067932751452,9.38191101629754 20.00211303259031,9.381966011250105 18.8266071784495,10.23608898370246 19.275570504584948,11.618033988749895 18.1,10.764 16.924429495415055,11.618033988749895 17.373392821550503,10.23608898370246 16.197886967409694,9.381966011250105 17.65093206724855,9.38191101629754" Fill="#fff"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_ua">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="10" Fill="#0057B7"/><Rectangle Canvas.Left="0" Canvas.Top="10" Width="30" Height="10" Fill="#FFD700"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_vn">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#DA251D"/><Polygon Points="15.0,5.8 15.943042658778044,8.702013134224835 18.994437368439645,8.70212862362522 16.525875074743944,10.495786865775166 17.468698059628387,13.39787137637478 15.0,11.6044 12.531301940371613,13.39787137637478 13.474124925256056,10.495786865775166 11.005562631560355,8.70212862362522 14.056957341221956,8.702013134224835" Fill="#FF0"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_cn">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#DE2910"/><Polygon Points="5.0,2.4 5.583788312576885,4.196484321186802 7.472746942367399,4.196555814625137 5.944589331984346,5.306915678813198 6.52824165596043,7.1034441853748636 5.0,5.9932 3.47175834403957,7.1034441853748636 4.055410668015654,5.306915678813198 2.5272530576326004,4.196555814625137 4.416211687423115,4.196484321186802" Fill="#FFDE00"/><Polygon Points="8.692181871006898,1.4542766412926822 9.094764122929885,1.9695182289364057 9.709209678246049,1.7459046722069074 9.343590566329166,2.28800155303368 9.746133815299537,2.803273613123672 9.117586525275366,2.6230663230261952 8.7519263797647,3.165135526344487 8.729081902910009,2.5116644152169614 8.100548255682813,2.331409547032251 8.714976882555577,2.107749479786757" Fill="#FFDE00"/><Polygon Points="10.7,3.5000000000000004 10.902080569738152,4.121859957333894 11.555950864665638,4.121884705062548 11.026973230302273,4.506240042666107 11.229006727063226,5.128115294937453 10.7,4.7438 10.170993272936773,5.128115294937453 10.373026769697725,4.506240042666107 9.84404913533436,4.121884705062548 10.497919430261847,4.121859957333894" Fill="#FFDE00"/><Polygon Points="10.707818128993102,6.154276641292682 10.685023117444423,6.807749479786757 11.299451744317187,7.031409547032251 10.670918097089992,7.211664415216961 10.6480736202353,7.865135526344487 10.282413474724635,7.323066323026195 9.653866184700464,7.503273613123672 10.056409433670835,6.98800155303368 9.690790321753951,6.4459046722069075 10.305235877070116,6.669518228936406" Fill="#FFDE00"/><Polygon Points="9.278508848717884,8.31056000119292 9.033587670693686,8.916827252292833 9.534465469110108,9.337145934074321 8.882186243043375,9.291558935458578 8.637219173630287,9.897807645233842 8.479009619789768,9.263366079544305 7.826733846351602,9.217729706039702 8.381234190799939,8.871210253183609 8.223072662190114,8.236756713459217 8.72398227567323,8.657037479520673" Fill="#FFDE00"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="Flag_tw">
+      <Viewbox Width="30" Height="20" Stretch="Fill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Canvas Width="30" Height="20"><Canvas.Clip><RectangleGeometry Rect="0,0,30,20" RadiusX="{DynamicResource AppCornerRadiusValue}" RadiusY="{DynamicResource AppCornerRadiusValue}"/></Canvas.Clip>
+          <Rectangle Canvas.Left="0" Canvas.Top="0" Width="30" Height="20" Fill="#FE0000"/><Rectangle Canvas.Left="0" Canvas.Top="0" Width="15" Height="10" Fill="#000095"/><Ellipse Canvas.Left="5.3" Canvas.Top="2.8" Width="4.4" Height="4.4" Fill="#fff"/><Polygon Points="10.1,5.0 10.874656915580495,5.414355767577502 10.874656915580495,4.585644232422498" Fill="#fff"/><Polygon Points="9.75166604983954,6.3 10.215360734160797,7.046171078716965 10.629716501738297,6.32848583686353" Fill="#fff"/><Polygon Points="8.8,7.251666049839541 8.828485836863532,8.129716501738297 9.546171078716965,7.715360734160796" Fill="#fff"/><Polygon Points="7.5,7.6 7.085644232422499,8.374656915580495 7.914355767577502,8.374656915580495" Fill="#fff"/><Polygon Points="6.200000000000001,7.251666049839541 5.453828921283037,7.715360734160797 6.17151416313647,8.129716501738297" Fill="#fff"/><Polygon Points="5.248333950160459,6.3 4.370283498261703,6.328485836863531 4.784639265839204,7.046171078716964" Fill="#fff"/><Polygon Points="4.9,5.0 4.125343084419505,4.585644232422499 4.125343084419505,5.414355767577502" Fill="#fff"/><Polygon Points="5.248333950160459,3.6999999999999997 4.784639265839204,2.9538289212830358 4.370283498261703,3.671514163136469" Fill="#fff"/><Polygon Points="6.199999999999999,2.7483339501604602 6.171514163136469,1.8702834982617031 5.4538289212830335,2.284639265839206" Fill="#fff"/><Polygon Points="7.499999999999999,2.4 7.9143557675775025,1.6253430844195051 7.085644232422497,1.6253430844195051" Fill="#fff"/><Polygon Points="8.8,2.74833395016046 9.546171078716966,2.284639265839205 8.82848583686353,1.8702834982617023" Fill="#fff"/><Polygon Points="9.751666049839539,3.699999999999999 10.629716501738297,3.671514163136469 10.215360734160793,2.953828921283033" Fill="#fff"/>
+        </Canvas>
+      </Viewbox>
+    </DataTemplate>
+    <DataTemplate x:Key="LanguageItemTemplate">
+      <StackPanel Orientation="Horizontal">
+        <ContentControl Content="{Binding}" Width="30" Height="20" Margin="0,0,9,0" Focusable="False">
+          <ContentControl.Style>
+            <Style TargetType="ContentControl">
+              <Setter Property="ContentTemplate" Value="{StaticResource Flag_gb}"/>
+              <Style.Triggers>
+              <DataTrigger Binding="{Binding Code}" Value="ar-SA"><Setter Property="ContentTemplate" Value="{StaticResource Flag_sa}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="bg-BG"><Setter Property="ContentTemplate" Value="{StaticResource Flag_bg}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="cs-CZ"><Setter Property="ContentTemplate" Value="{StaticResource Flag_cz}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="da-DK"><Setter Property="ContentTemplate" Value="{StaticResource Flag_dk}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="de-DE"><Setter Property="ContentTemplate" Value="{StaticResource Flag_de}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="el-GR"><Setter Property="ContentTemplate" Value="{StaticResource Flag_gr}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="en-US"><Setter Property="ContentTemplate" Value="{StaticResource Flag_gb}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="es-419"><Setter Property="ContentTemplate" Value="{StaticResource Flag_mx}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="es-ES"><Setter Property="ContentTemplate" Value="{StaticResource Flag_es}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="fi-FI"><Setter Property="ContentTemplate" Value="{StaticResource Flag_fi}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="fr-FR"><Setter Property="ContentTemplate" Value="{StaticResource Flag_fr}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="hu-HU"><Setter Property="ContentTemplate" Value="{StaticResource Flag_hu}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="id-ID"><Setter Property="ContentTemplate" Value="{StaticResource Flag_id}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="it-IT"><Setter Property="ContentTemplate" Value="{StaticResource Flag_it}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="ja-JP"><Setter Property="ContentTemplate" Value="{StaticResource Flag_jp}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="ko-KR"><Setter Property="ContentTemplate" Value="{StaticResource Flag_kr}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="ms-MY"><Setter Property="ContentTemplate" Value="{StaticResource Flag_my}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="nb-NO"><Setter Property="ContentTemplate" Value="{StaticResource Flag_no}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="nl-NL"><Setter Property="ContentTemplate" Value="{StaticResource Flag_nl}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="pl-PL"><Setter Property="ContentTemplate" Value="{StaticResource Flag_pl}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="pt-BR"><Setter Property="ContentTemplate" Value="{StaticResource Flag_br}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="pt-PT"><Setter Property="ContentTemplate" Value="{StaticResource Flag_pt}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="ro-RO"><Setter Property="ContentTemplate" Value="{StaticResource Flag_ro}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="ru-RU"><Setter Property="ContentTemplate" Value="{StaticResource Flag_ru}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="sv-SE"><Setter Property="ContentTemplate" Value="{StaticResource Flag_se}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="th-TH"><Setter Property="ContentTemplate" Value="{StaticResource Flag_th}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="tr-TR"><Setter Property="ContentTemplate" Value="{StaticResource Flag_tr}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="uk-UA"><Setter Property="ContentTemplate" Value="{StaticResource Flag_ua}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="vi-VN"><Setter Property="ContentTemplate" Value="{StaticResource Flag_vn}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="zh-CN"><Setter Property="ContentTemplate" Value="{StaticResource Flag_cn}"/></DataTrigger>
+              <DataTrigger Binding="{Binding Code}" Value="zh-TW"><Setter Property="ContentTemplate" Value="{StaticResource Flag_tw}"/></DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </ContentControl.Style>
+        </ContentControl>
+        <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+      </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="ThemeItemTemplate"><TextBlock Text="{Binding Name}" VerticalAlignment="Center"/></DataTemplate>
+
+    <Style x:Key="PageContentStyle" TargetType="Grid">
+      <Setter Property="MaxWidth" Value="1200"/>
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}" Value="Maximized">
+          <Setter Property="MaxWidth" Value="1600"/>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="ScrollablePageContentStyle" TargetType="Grid">
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    </Style>
+    <Style x:Key="SoftwarePageRootStyle" TargetType="Grid" BasedOn="{StaticResource ScrollablePageContentStyle}">
+      <Setter Property="HorizontalAlignment" Value="Left"/>
+      <Setter Property="MaxWidth" Value="1200"/>
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}" Value="Maximized">
+          <Setter Property="MaxWidth" Value="1600"/>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="PageHeaderContentStyle" TargetType="FrameworkElement">
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="Width" Value="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}"/>
+      <Setter Property="MaxWidth" Value="1200"/>
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}" Value="Maximized">
+          <Setter Property="MaxWidth" Value="1600"/>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="PageScrollContentStyle" TargetType="FrameworkElement">
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="Width" Value="{Binding ViewportWidth, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"/>
+      <Setter Property="MaxWidth" Value="1200"/>
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}" Value="Maximized">
+          <Setter Property="MaxWidth" Value="1600"/>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="SoftwareFixedContentStyle" TargetType="FrameworkElement">
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="Margin" Value="0"/>
+    </Style>
+    <Style x:Key="CardStyle" TargetType="Border">
+      <Setter Property="Background" Value="{DynamicResource CardBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource CardBorderBrush}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="{DynamicResource AppCornerRadius}"/>
+      <Setter Property="Padding" Value="14"/>
+      <Setter Property="TextElement.Foreground" Value="{DynamicResource CardTextBrush}"/>
+    </Style>
+    <Style x:Key="StickyLogCardStyle" TargetType="Border" BasedOn="{StaticResource CardStyle}">
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="MaxWidth" Value="1200"/>
+      <Setter Property="Margin" Value="0,10,16,0"/>
+      <Setter Property="Padding" Value="12,10"/>
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}" Value="Maximized">
+          <Setter Property="MaxWidth" Value="1600"/>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="SoftwareStickyCardStyle" TargetType="Border" BasedOn="{StaticResource CardStyle}">
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="Margin" Value="0,10,0,0"/>
+      <Setter Property="Padding" Value="12,10"/>
+    </Style>
+    <Style x:Key="RoundedProgressBarStyle" TargetType="ProgressBar">
+      <Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>
+      <Setter Property="Background" Value="{DynamicResource ProgressTrackBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource CardBorderBrush}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="ProgressBar">
+            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="{DynamicResource AppCornerRadius}" ClipToBounds="True">
+              <Grid x:Name="ProgressRoot" ClipToBounds="True">
+                <Border x:Name="PART_Track" Background="{TemplateBinding Background}" CornerRadius="{DynamicResource AppCornerRadius}"/>
+                <Border x:Name="PART_Indicator" HorizontalAlignment="Left" Background="{TemplateBinding Foreground}" CornerRadius="{DynamicResource AppCornerRadius}"/>
+              </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsIndeterminate" Value="True">
+                <Setter TargetName="PART_Indicator" Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter TargetName="PART_Indicator" Property="Opacity" Value="0.72"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style x:Key="ClickableCardStyle" TargetType="Border" BasedOn="{StaticResource CardStyle}">
+      <Style.Triggers>
+        <Trigger Property="IsMouseOver" Value="True">
+          <Setter Property="Background" Value="{DynamicResource ClickableCardHoverBrush}"/>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+  <Style x:Key="SubCardStyle" TargetType="Border">
+    <Setter Property="Background" Value="{DynamicResource CardBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="{DynamicResource AppCornerRadius}"/>
+      <Setter Property="Padding" Value="8"/>
+      <Setter Property="TextElement.Foreground" Value="{DynamicResource CardTextBrush}"/>
+    </Style>
+    <Style x:Key="ClickableSubCardStyle" TargetType="Border" BasedOn="{StaticResource SubCardStyle}">
+      <Setter Property="Cursor" Value="Hand"/>
+      <Style.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter Property="Background" Value="{DynamicResource ClickableCardHoverBrush}"/></Trigger></Style.Triggers>
+    </Style>
+    <Style x:Key="NavButtonStyle" TargetType="Button">
+      <Setter Property="Height" Value="36"/><Setter Property="Margin" Value="8,2"/><Setter Property="Padding" Value="12,0"/>
+      <Setter Property="HorizontalContentAlignment" Value="Left"/><Setter Property="Foreground" Value="{DynamicResource NavTextBrush}"/>
+      <Setter Property="Background" Value="Transparent"/><Setter Property="BorderBrush" Value="Transparent"/><Setter Property="BorderThickness" Value="1"/><Setter Property="FontSize" Value="14"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="NavBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource AppCornerRadius}" Padding="{TemplateBinding Padding}"><ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center"/></Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="NavBorder" Property="Background" Value="{DynamicResource NavHoverBrush}"/><Setter TargetName="NavBorder" Property="BorderBrush" Value="{DynamicResource CardBorderBrush}"/><Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/></Trigger>
+              <Trigger Property="Tag" Value="Selected"><Setter TargetName="NavBorder" Property="Background" Value="{DynamicResource NavSelectedBrush}"/><Setter TargetName="NavBorder" Property="BorderBrush" Value="{DynamicResource CardBorderBrush}"/><Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/></Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style x:Key="ButtonStyle" TargetType="Button">
+      <Setter Property="Height" Value="32"/><Setter Property="MinHeight" Value="32"/><Setter Property="Padding" Value="11,4"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="FontSize" Value="12"/>
+      <Setter Property="Background" Value="{DynamicResource ControlBrush}"/><Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/><Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="Template">
+        <Setter.Value><ControlTemplate TargetType="Button"><Border x:Name="B" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource AppCornerRadius}" Padding="{TemplateBinding Padding}"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="B" Property="Background" Value="{DynamicResource ControlHoverBrush}"/></Trigger><Trigger Property="IsPressed" Value="True"><Setter TargetName="B" Property="Opacity" Value="0.78"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="B" Property="Opacity" Value="0.42"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value>
+      </Setter>
+    </Style>
+    <Style x:Key="AccentHoverButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border x:Name="AccentHoverBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource AppCornerRadius}" Padding="{TemplateBinding Padding}"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="AccentHoverBorder" Property="Background" Value="{DynamicResource AccentBrush}"/><Setter TargetName="AccentHoverBorder" Property="BorderBrush" Value="{DynamicResource AccentBrush}"/><Setter Property="Foreground" Value="{DynamicResource AccentTextBrush}"/></Trigger><Trigger Property="IsPressed" Value="True"><Setter TargetName="AccentHoverBorder" Property="Opacity" Value="0.78"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="AccentHoverBorder" Property="Opacity" Value="0.42"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="DangerHoverButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border x:Name="DangerHoverBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource AppCornerRadius}" Padding="{TemplateBinding Padding}"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="DangerHoverBorder" Property="Background" Value="#D13438"/><Setter TargetName="DangerHoverBorder" Property="BorderBrush" Value="#D13438"/><Setter Property="Foreground" Value="#FFFFFF"/></Trigger><Trigger Property="IsPressed" Value="True"><Setter TargetName="DangerHoverBorder" Property="Opacity" Value="0.78"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="DangerHoverBorder" Property="Opacity" Value="0.42"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="GreenHoverButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}"><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border x:Name="GreenBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource AppCornerRadius}" Padding="{TemplateBinding Padding}"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="GreenBorder" Property="Background" Value="#107C10"/><Setter TargetName="GreenBorder" Property="BorderBrush" Value="#107C10"/><Setter Property="Foreground" Value="#FFFFFF"/></Trigger><Trigger Property="IsPressed" Value="True"><Setter TargetName="GreenBorder" Property="Opacity" Value="0.78"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style>
+    <Style x:Key="BackupContextMenuStyle" TargetType="ContextMenu"><Setter Property="Background" Value="Transparent"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ContextMenu"><Border Background="{DynamicResource InputBrush}" BorderBrush="{DynamicResource ControlBorderBrush}" BorderThickness="1" CornerRadius="{DynamicResource AppCornerRadius}" Padding="4"><ItemsPresenter/></Border></ControlTemplate></Setter.Value></Setter></Style>
+    <Style x:Key="BackupMenuItemStyle" TargetType="MenuItem"><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="Background" Value="Transparent"/><Setter Property="Padding" Value="12,7"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="MenuItem"><Border x:Name="MenuItemBorder" Background="{TemplateBinding Background}" CornerRadius="{DynamicResource AppCornerRadius}" Padding="{TemplateBinding Padding}"><ContentPresenter ContentSource="Header"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="MenuItemBorder" Property="Background" Value="{DynamicResource AccentBrush}"/><Setter Property="Foreground" Value="{DynamicResource AccentTextBrush}"/></Trigger><MultiTrigger><MultiTrigger.Conditions><Condition Property="IsMouseOver" Value="True"/><Condition Property="Tag" Value="Danger"/></MultiTrigger.Conditions><Setter TargetName="MenuItemBorder" Property="Background" Value="#D13438"/><Setter Property="Foreground" Value="#FFFFFF"/></MultiTrigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style>
+    <Style x:Key="TitleButtonStyle" TargetType="Button">
+      <Setter Property="Width" Value="30"/><Setter Property="Height" Value="26"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="Background" Value="Transparent"/><Setter Property="BorderThickness" Value="0"/><Setter Property="FontSize" Value="13"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border x:Name="TitleButtonBorder" Background="{TemplateBinding Background}" CornerRadius="{DynamicResource AppCornerRadius}"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="TitleButtonBorder" Property="Background" Value="{DynamicResource TitleButtonHoverBrush}"/><Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/></Trigger><Trigger Property="IsPressed" Value="True"><Setter TargetName="TitleButtonBorder" Property="Opacity" Value="0.78"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="DisplayCarouselButtonStyle" TargetType="Button">
+      <Setter Property="Width" Value="28"/><Setter Property="Height" Value="24"/><Setter Property="Padding" Value="0"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="Background" Value="Transparent"/><Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border Background="Transparent"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><ControlTemplate.Triggers><MultiTrigger><MultiTrigger.Conditions><Condition Property="IsEnabled" Value="True"/><Condition Property="IsMouseOver" Value="True"/></MultiTrigger.Conditions><Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/></MultiTrigger><Trigger Property="IsPressed" Value="True"><Setter Property="Opacity" Value="0.78"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.42"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="SidebarToggleButtonStyle" TargetType="Button" BasedOn="{StaticResource TitleButtonStyle}">
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border x:Name="TitleButtonBorder" Background="{TemplateBinding Background}" CornerRadius="{DynamicResource AppCornerRadius}"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="TitleButtonBorder" Property="Background" Value="{DynamicResource SidebarToggleHoverBrush}"/><Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/></Trigger><Trigger Property="IsPressed" Value="True"><Setter TargetName="TitleButtonBorder" Property="Opacity" Value="0.78"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="CloseButtonStyle" TargetType="Button" BasedOn="{StaticResource TitleButtonStyle}">
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border x:Name="TitleButtonBorder" Background="{TemplateBinding Background}" CornerRadius="{DynamicResource AppCornerRadius}"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="TitleButtonBorder" Property="Background" Value="#D13438"/><Setter Property="Foreground" Value="#FFFFFF"/></Trigger><Trigger Property="IsPressed" Value="True"><Setter TargetName="TitleButtonBorder" Property="Opacity" Value="0.78"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="TextBox">
+      <Setter Property="Height" Value="34"/><Setter Property="Padding" Value="9,5"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="Background" Value="{DynamicResource InputBrush}"/><Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/><Setter Property="CaretBrush" Value="{DynamicResource TextBrush}"/><Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="TextBox"><Border x:Name="TextBoxBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource AppCornerRadius}" ClipToBounds="True"><Grid><ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"/><Border x:Name="InputInnerShadow" Height="2" Margin="1,1,1,0" VerticalAlignment="Top" Background="{StaticResource InputInnerShadowBrush}" CornerRadius="4,4,0,0" IsHitTestVisible="False"/></Grid></Border><ControlTemplate.Triggers><Trigger Property="IsKeyboardFocusWithin" Value="True"><Setter TargetName="TextBoxBorder" Property="BorderBrush" Value="{DynamicResource AccentBrush}"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="TextBoxBorder" Property="Opacity" Value="0.45"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="PasswordBox">
+      <Setter Property="Height" Value="34"/><Setter Property="Padding" Value="9,5"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="Background" Value="{DynamicResource InputBrush}"/><Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/><Setter Property="CaretBrush" Value="{DynamicResource TextBrush}"/><Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="PasswordBox"><Border x:Name="PasswordBoxBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource AppCornerRadius}" ClipToBounds="True"><Grid><ScrollViewer x:Name="PART_ContentHost" Focusable="False"/><Border x:Name="InputInnerShadow" Height="2" Margin="1,1,1,0" VerticalAlignment="Top" Background="{StaticResource InputInnerShadowBrush}" CornerRadius="4,4,0,0" IsHitTestVisible="False"/></Grid></Border><ControlTemplate.Triggers><Trigger Property="IsKeyboardFocusWithin" Value="True"><Setter TargetName="PasswordBoxBorder" Property="BorderBrush" Value="{DynamicResource AccentBrush}"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="PasswordBoxBorder" Property="Opacity" Value="0.45"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="ComboItemStyle" TargetType="ComboBoxItem">
+      <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="Background" Value="{DynamicResource ComboBrush}"/><Setter Property="Padding" Value="9,6"/><Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ComboBoxItem"><Border x:Name="ComboItemBorder" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" CornerRadius="{DynamicResource AppCornerRadius}"><ContentPresenter/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="ComboItemBorder" Property="Background" Value="{DynamicResource ComboHoverBrush}"/></Trigger><Trigger Property="IsSelected" Value="True"><Setter TargetName="ComboItemBorder" Property="Background" Value="{DynamicResource ComboHoverBrush}"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="ComboBox">
+      <Setter Property="Height" Value="34"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="Background" Value="{DynamicResource ComboBrush}"/><Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/><Setter Property="ItemContainerStyle" Value="{StaticResource ComboItemStyle}"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ComboBox"><Grid><Border x:Name="ComboOuter" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="{DynamicResource AppCornerRadius}"><Grid><ContentPresenter Margin="9,0,28,0" VerticalAlignment="Center" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"/><Path HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,11,0" Fill="{TemplateBinding Foreground}" Data="M 0 0 L 5 5 L 10 0 Z"/></Grid></Border><ToggleButton Background="Transparent" BorderThickness="0" Focusable="False" ClickMode="Press" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"><ToggleButton.Template><ControlTemplate TargetType="ToggleButton"><Border Background="Transparent" CornerRadius="{DynamicResource AppCornerRadius}"/></ControlTemplate></ToggleButton.Template></ToggleButton><Popup x:Name="PART_Popup" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" AllowsTransparency="True" Focusable="False" PopupAnimation="None"><Border MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}" Margin="0,3,0,0" Background="{DynamicResource ComboBrush}" BorderBrush="{DynamicResource ControlBorderBrush}" BorderThickness="1" CornerRadius="{DynamicResource AppCornerRadius}" Padding="0"><ScrollViewer MaxHeight="250" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" CanContentScroll="False" Padding="0"><ItemsPresenter Margin="0"/></ScrollViewer></Border></Popup></Grid><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="ComboOuter" Property="Background" Value="{DynamicResource ComboHoverBrush}"/><Setter TargetName="ComboOuter" Property="BorderBrush" Value="{DynamicResource AccentBrush}"/></Trigger><Trigger Property="IsKeyboardFocusWithin" Value="True"><Setter TargetName="ComboOuter" Property="BorderBrush" Value="{DynamicResource AccentBrush}"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="ComboOuter" Property="Opacity" Value="0.45"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="CheckBox"><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="Margin" Value="0,6"/></Style>
+    <Style x:Key="SwitchToggleStyle" TargetType="ToggleButton">
+      <Setter Property="Width" Value="42"/><Setter Property="Height" Value="22"/><Setter Property="Focusable" Value="False"/><Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ToggleButton"><Border x:Name="SwitchTrack" Background="{DynamicResource InputBrush}" BorderBrush="{DynamicResource ControlBorderBrush}" BorderThickness="1" CornerRadius="{DynamicResource AppCornerRadius}"><Grid Margin="2"><Border x:Name="SwitchThumb" Width="16" Height="16" HorizontalAlignment="Left" Background="{DynamicResource MutedBrush}" CornerRadius="{DynamicResource AppCornerRadius}"/></Grid></Border><ControlTemplate.Triggers><Trigger Property="IsChecked" Value="True"><Setter TargetName="SwitchTrack" Property="Background" Value="{DynamicResource AccentBrush}"/><Setter TargetName="SwitchTrack" Property="BorderBrush" Value="{DynamicResource AccentBrush}"/><Setter TargetName="SwitchThumb" Property="HorizontalAlignment" Value="Right"/><Setter TargetName="SwitchThumb" Property="Background" Value="#FFFFFF"/></Trigger><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="SwitchTrack" Property="BorderBrush" Value="{DynamicResource AccentBrush}"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="SwitchTrack" Property="Opacity" Value="0.45"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="AccentSliderStyle" TargetType="Slider">
+      <Setter Property="Height" Value="28"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Slider">
+            <Grid VerticalAlignment="Center">
+              <Track x:Name="PART_Track" Height="18" VerticalAlignment="Center">
+                <Track.DecreaseRepeatButton>
+                  <RepeatButton Command="Slider.DecreaseLarge" Focusable="False">
+                    <RepeatButton.Template><ControlTemplate TargetType="RepeatButton"><Border Height="5" VerticalAlignment="Center" Background="{DynamicResource AccentBrush}" CornerRadius="3,0,0,3"/></ControlTemplate></RepeatButton.Template>
+                  </RepeatButton>
+                </Track.DecreaseRepeatButton>
+                <Track.Thumb>
+                  <Thumb Width="17" Height="17" Focusable="False">
+                    <Thumb.Template><ControlTemplate TargetType="Thumb"><Ellipse x:Name="SliderThumb" Fill="{DynamicResource AccentBrush}" Stroke="#FFFFFF" StrokeThickness="2"><Ellipse.Effect><DropShadowEffect BlurRadius="5" ShadowDepth="0" Opacity="0.35"/></Ellipse.Effect></Ellipse><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="SliderThumb" Property="StrokeThickness" Value="3"/></Trigger><Trigger Property="IsDragging" Value="True"><Setter TargetName="SliderThumb" Property="Opacity" Value="0.82"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Thumb.Template>
+                  </Thumb>
+                </Track.Thumb>
+                <Track.IncreaseRepeatButton>
+                  <RepeatButton Command="Slider.IncreaseLarge" Focusable="False">
+                    <RepeatButton.Template><ControlTemplate TargetType="RepeatButton"><Border Height="5" VerticalAlignment="Center" Background="{DynamicResource ControlBorderBrush}" CornerRadius="0,3,3,0"/></ControlTemplate></RepeatButton.Template>
+                  </RepeatButton>
+                </Track.IncreaseRepeatButton>
+              </Track>
+            </Grid>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style TargetType="RadioButton"><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="Margin" Value="0,5"/></Style>
+    <Style x:Key="ScrollThumbStyle" TargetType="Thumb"><Setter Property="Background" Value="{DynamicResource ScrollThumbBrush}"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Thumb"><Grid Margin="1"><Border x:Name="ThumbBorder" Background="{TemplateBinding Background}" CornerRadius="{DynamicResource AppCornerRadius}"/></Grid><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="ThumbBorder" Property="Background" Value="{DynamicResource ScrollThumbHoverBrush}"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style>
+    <Style TargetType="ScrollBar">
+      <Setter Property="Width" Value="9"/><Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ScrollBar"><Grid Width="9" Background="Transparent"><Track x:Name="PART_Track" Orientation="{TemplateBinding Orientation}" IsDirectionReversed="True" Focusable="False"><Track.DecreaseRepeatButton><RepeatButton Command="ScrollBar.PageUpCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Opacity="0" Focusable="False"/></Track.DecreaseRepeatButton><Track.Thumb><Thumb Style="{StaticResource ScrollThumbStyle}" MinHeight="28"/></Track.Thumb><Track.IncreaseRepeatButton><RepeatButton Command="ScrollBar.PageDownCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Opacity="0" Focusable="False"/></Track.IncreaseRepeatButton></Track></Grid></ControlTemplate></Setter.Value></Setter>
+      <Style.Triggers><Trigger Property="Orientation" Value="Horizontal"><Setter Property="Width" Value="Auto"/><Setter Property="Height" Value="9"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ScrollBar"><Grid Height="9" Background="Transparent"><Track x:Name="PART_Track" Orientation="{TemplateBinding Orientation}" Focusable="False"><Track.DecreaseRepeatButton><RepeatButton Command="ScrollBar.PageLeftCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Opacity="0" Focusable="False"/></Track.DecreaseRepeatButton><Track.Thumb><Thumb Style="{StaticResource ScrollThumbStyle}" MinWidth="28"/></Track.Thumb><Track.IncreaseRepeatButton><RepeatButton Command="ScrollBar.PageRightCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Opacity="0" Focusable="False"/></Track.IncreaseRepeatButton></Track></Grid></ControlTemplate></Setter.Value></Setter></Trigger></Style.Triggers>
+    </Style>
+    <Style x:Key="CleanScrollViewerStyle" TargetType="ScrollViewer">
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ScrollViewer"><Grid Background="Transparent"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions><ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Grid.Row="0" Grid.Column="0" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" CanContentScroll="{TemplateBinding CanContentScroll}" Margin="{TemplateBinding Padding}"/><ScrollBar x:Name="PART_VerticalScrollBar" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="1,0,0,0" Maximum="{TemplateBinding ScrollableHeight}" ViewportSize="{TemplateBinding ViewportHeight}" Value="{TemplateBinding VerticalOffset}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/><ScrollBar x:Name="PART_HorizontalScrollBar" Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="0,1,0,0" Maximum="{TemplateBinding ScrollableWidth}" ViewportSize="{TemplateBinding ViewportWidth}" Value="{TemplateBinding HorizontalOffset}" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/><Border Grid.Row="1" Grid.Column="1" Width="9" Height="9" Background="Transparent"/></Grid></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="PageScrollViewerStyle" TargetType="ScrollViewer" BasedOn="{StaticResource CleanScrollViewerStyle}">
+      <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+      <Setter Property="Padding" Value="0,0,16,8"/>
+    </Style>
+    <Style x:Key="SoftwarePageScrollViewerStyle" TargetType="ScrollViewer" BasedOn="{StaticResource CleanScrollViewerStyle}">
+      <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+      <Setter Property="VerticalContentAlignment" Value="Top"/>
+      <Setter Property="Padding" Value="0,0,0,8"/>
+    </Style>
+    <Style x:Key="SoftwarePageScrollContentStyle" TargetType="FrameworkElement">
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+    <SolidColorBrush x:Key="LogSuccessBrush" Color="#4CC38A"/>
+    <SolidColorBrush x:Key="LogErrorBrush" Color="#FF6B6B"/>
+    <Style x:Key="LogRichTextBoxStyle" TargetType="RichTextBox">
+      <Setter Property="Padding" Value="9"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+      <Setter Property="Background" Value="{DynamicResource InputBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CaretBrush" Value="{DynamicResource TextBrush}"/>
+      <Setter Property="VerticalContentAlignment" Value="Top"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="RichTextBox"><Border x:Name="RichTextBoxBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource AppCornerRadius}" ClipToBounds="True"><Grid><ScrollViewer x:Name="PART_ContentHost" Style="{StaticResource CleanScrollViewerStyle}" Focusable="False" HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"/><Border x:Name="InputInnerShadow" Height="2" Margin="1,1,1,0" VerticalAlignment="Top" Background="{StaticResource InputInnerShadowBrush}" CornerRadius="4,4,0,0" IsHitTestVisible="False"/></Grid></Border><ControlTemplate.Triggers><Trigger Property="IsKeyboardFocusWithin" Value="True"><Setter TargetName="RichTextBoxBorder" Property="BorderBrush" Value="{DynamicResource AccentBrush}"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="RichTextBoxBorder" Property="Opacity" Value="0.45"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="DataGrid">
+      <Setter Property="Background" Value="{DynamicResource GridBrush}"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="BorderBrush" Value="{DynamicResource CardBorderBrush}"/><Setter Property="GridLinesVisibility" Value="Horizontal"/><Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource SeparatorBrush}"/><Setter Property="RowBackground" Value="{DynamicResource GridBrush}"/><Setter Property="AlternatingRowBackground" Value="{DynamicResource GridAlternateBrush}"/><Setter Property="HeadersVisibility" Value="Column"/><Setter Property="AutoGenerateColumns" Value="False"/><Setter Property="IsReadOnly" Value="True"/><Setter Property="SelectionMode" Value="Single"/>
+    </Style>
+    <Style TargetType="DataGridColumnHeader"><Setter Property="Background" Value="{DynamicResource CardBrush}"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="BorderBrush" Value="{DynamicResource CardBorderBrush}"/><Setter Property="Padding" Value="10,7"/></Style>
+    <Style TargetType="DataGridRow"><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="Background" Value="{DynamicResource GridBrush}"/><Setter Property="BorderThickness" Value="0"/><Style.Triggers><Trigger Property="IsSelected" Value="True"><Setter Property="Background" Value="{DynamicResource AccentBrush}"/><Setter Property="Foreground" Value="{DynamicResource AccentTextBrush}"/></Trigger><Trigger Property="Tag" Value="ContextSelected"><Setter Property="Background" Value="{DynamicResource AccentHalfBrush}"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/></Trigger></Style.Triggers></Style>
+    <Style x:Key="AppxDataGridRowStyle" TargetType="DataGridRow" BasedOn="{StaticResource {x:Type DataGridRow}}"><Style.Triggers><Trigger Property="IsSelected" Value="True"><Setter Property="Background" Value="{DynamicResource AccentHalfBrush}"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/></Trigger><Trigger Property="Tag" Value="ContextSelected"><Setter Property="Background" Value="{DynamicResource AccentHalfBrush}"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/></Trigger></Style.Triggers></Style>
+    <Style TargetType="DataGridCell"><Setter Property="Background" Value="Transparent"/><Setter Property="BorderThickness" Value="0"/><Setter Property="FocusVisualStyle" Value="{x:Null}"/><Style.Triggers><Trigger Property="IsSelected" Value="True"><Setter Property="Background" Value="Transparent"/><Setter Property="Foreground" Value="{DynamicResource AccentTextBrush}"/></Trigger></Style.Triggers></Style>
+  </Window.Resources>

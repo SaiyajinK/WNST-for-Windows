@@ -1,0 +1,77 @@
+﻿<Grid x:Name="HomePage" Style="{StaticResource ScrollablePageContentStyle}">
+            <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+            <StackPanel Style="{StaticResource PageHeaderContentStyle}">
+              <TextBlock x:Name="HomeTitle" Text="Host" FontSize="24" FontWeight="SemiBold" Foreground="{DynamicResource AccentBrush}" Margin="0,10,0,0"/>
+              <TextBlock x:Name="HomeSubtitle" Text="Configurez la source et automatisez la mise à jour du fichier hosts." Foreground="{DynamicResource MutedBrush}" Margin="0,3,0,0"/>
+            </StackPanel>
+            <Grid Grid.Row="1" Style="{StaticResource PageHeaderContentStyle}">
+              <Border x:Name="SourceBanner" Margin="0,11,0,10" Padding="11,8" CornerRadius="{DynamicResource AppCornerRadius}" Background="#2C2921" BorderBrush="#574B33" BorderThickness="1" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal"><Ellipse x:Name="SourceDot" Width="9" Height="9" Fill="#E5AA42" Margin="0,0,10,0"/><TextBlock x:Name="SourceBannerTitle" Text="Aucune source configurée" Foreground="#F1D39C" FontWeight="SemiBold"/><TextBlock x:Name="SourceBannerHint" Text="  ·  Ajoutez une adresse pour activer la mise à jour." Foreground="#F1D39C" FontSize="12"/></StackPanel>
+              </Border>
+            </Grid>
+            <ScrollViewer Grid.Row="2" Style="{StaticResource PageScrollViewerStyle}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,-12,0">
+              <Grid Style="{StaticResource PageScrollContentStyle}">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="2*"/><ColumnDefinition Width="10"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                  <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                    <StackPanel>
+                      <TextBlock Foreground="{DynamicResource CardTitleBrush}" x:Name="SourceTitle" Text="Source de la liste" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,0"/>
+                      <TextBlock x:Name="SourceLabel" Text="Adresse de téléchargement" Foreground="{DynamicResource MutedBrush}" FontSize="11" LineHeight="14" Margin="0,9,0,7"/>
+                      <Grid>
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="8"/><ColumnDefinition Width="30"/><ColumnDefinition Width="8"/><ColumnDefinition Width="105"/></Grid.ColumnDefinitions>
+                        <Grid>
+                          <TextBox x:Name="SourceUrlBox" Padding="7,3"/>
+                          <TextBlock x:Name="SourcePlaceholder" Text="Collez une adresse https://…" Foreground="{DynamicResource SubtleTextBrush}" VerticalAlignment="Center" Margin="10,0,0,0" IsHitTestVisible="False"/>
+                        </Grid>
+                        <Button x:Name="ClearSourceButton" Grid.Column="2" Style="{StaticResource DangerHoverButtonStyle}" Content="×" Padding="0" FontSize="18" ToolTip="Effacer l’adresse"/>
+                        <Button x:Name="TestSourceButton" Grid.Column="4" Style="{StaticResource AccentHoverButtonStyle}" Content="Tester"/>
+                      </Grid>
+                      <TextBlock x:Name="SourcePersistence" Text="L'adresse est enregistrée automatiquement et restaurée au prochain lancement." Foreground="{DynamicResource AccentBrush}" FontSize="11" Margin="0,8,0,0" TextWrapping="Wrap"/>
+                      <Grid Margin="0,8,0,0"><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><Button x:Name="ManualAddButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Ajout manuel"/><TextBlock x:Name="ManualAddHint" Grid.Column="1" Text="Ajouter vos propres lignes au fichier hosts." Foreground="{DynamicResource MutedBrush}" FontSize="12" Margin="10,0,0,0" VerticalAlignment="Center"/></Grid>
+                    </StackPanel>
+                  </Border>
+
+                  <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                    <StackPanel>
+                      <TextBlock Foreground="{DynamicResource CardTitleBrush}" x:Name="UpdateModeTitle" Text="Comportement du fichier hosts" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,0"/>
+                      <RadioButton x:Name="MergeModeRadio" GroupName="UpdateMode" Margin="0,10,0,0"><StackPanel VerticalAlignment="Center"><TextBlock x:Name="ModeMerge" Text="Fusionner avec le fichier actuel"/><TextBlock x:Name="ModeMergeHint" Text="Conserve vos lignes et remplace uniquement le bloc géré." Foreground="{DynamicResource MutedBrush}" FontSize="12" Margin="20,1,0,0" TextWrapping="Wrap"/></StackPanel></RadioButton>
+                      <RadioButton x:Name="ReplaceModeRadio" GroupName="UpdateMode"><StackPanel VerticalAlignment="Center"><TextBlock x:Name="ModeReplace" Text="Écraser et repartir à neuf"/><TextBlock x:Name="ModeReplaceHint" Text="Remplace entièrement le contenu actuel par la liste." Foreground="{DynamicResource MutedBrush}" FontSize="12" Margin="20,1,0,0" TextWrapping="Wrap"/></StackPanel></RadioButton>
+                      <CheckBox x:Name="AutomaticBackupCheck" Margin="0,7,0,0"><TextBlock x:Name="AutomaticBackup" Text="Créer une sauvegarde avant chaque modification" FontSize="11"/></CheckBox>
+                    </StackPanel>
+                  </Border>
+
+                  <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                      <TextBlock Foreground="{DynamicResource CardTitleBrush}" x:Name="AutomationTitle" Text="Automatisation" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,0"/>
+                      <CheckBox x:Name="DailyUpdateCheck" Margin="0,9,0,0"><StackPanel VerticalAlignment="Center"><TextBlock x:Name="DailyUpdate" Text="Mise à jour quotidienne"/><TextBlock x:Name="DailyUpdateHint" Text="Une tâche planifiée Windows sera créée." Foreground="{DynamicResource MutedBrush}" FontSize="12" Margin="20,1,0,0"/></StackPanel></CheckBox>
+                      <Grid Margin="0,7,0,1"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="95"/></Grid.ColumnDefinitions><TextBlock x:Name="UpdateTimeLabel" Text="Heure quotidienne" Foreground="{DynamicResource MutedBrush}" VerticalAlignment="Center"/><ComboBox x:Name="UpdateTimeCombo" Grid.Column="1"/></Grid>
+                      <CheckBox x:Name="FlushDnsCheck" Content="Vider le cache DNS après la mise à jour"/>
+                    </StackPanel>
+                  </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2">
+                  <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                    <StackPanel>
+                      <TextBlock Foreground="{DynamicResource CardTitleBrush}" x:Name="StatusTitle" Text="État" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                      <Grid Margin="0,8"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock x:Name="LastUpdateLabel" Text="Dernière mise à jour" Foreground="{DynamicResource MutedBrush}"/><TextBlock x:Name="LastUpdateValue" Grid.Column="1" Text="Jamais" FontWeight="SemiBold"/></Grid>
+                      <Separator Background="{DynamicResource SeparatorBrush}"/>
+                      <Grid Margin="0,8"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock x:Name="NextRunLabel" Text="Prochaine exécution" Foreground="{DynamicResource MutedBrush}"/><TextBlock x:Name="NextRunValue" Grid.Column="1" Text="Désactivée" FontWeight="SemiBold"/></Grid>
+                      <Separator Background="{DynamicResource SeparatorBrush}"/>
+                      <Grid Margin="0,8"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock x:Name="ManagedEntriesLabel" Text="Entrées gérées" Foreground="{DynamicResource MutedBrush}"/><TextBlock x:Name="ManagedEntriesValue" Grid.Column="1" Text="0" FontWeight="SemiBold"/></Grid>
+                      <Separator Background="{DynamicResource SeparatorBrush}"/>
+                      <Grid Margin="0,8"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock x:Name="TaskStatusLabel" Text="Tâche planifiée" Foreground="{DynamicResource MutedBrush}"/><TextBlock x:Name="TaskStatusValue" Grid.Column="1" Text="Absente" FontWeight="SemiBold"/></Grid>
+                    </StackPanel>
+                  </Border>
+                  <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                      <TextBlock Foreground="{DynamicResource CardTitleBrush}" x:Name="ActionsTitle" Text="Actions" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                      <Button x:Name="UpdateNowButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Mettre à jour maintenant" Margin="0,0,0,8"/>
+                      <Button x:Name="RestoreLatestButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Restaurer la dernière sauvegarde" Margin="0,0,0,8"/>
+                      <Button x:Name="OpenHostsButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Ouvrir le fichier hosts"/>
+                    </StackPanel>
+                  </Border>
+                </StackPanel>
+              </Grid>
+            </ScrollViewer>
+          </Grid>

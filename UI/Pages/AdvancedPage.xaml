@@ -1,0 +1,60 @@
+﻿<Grid x:Name="AdvancedPage" Visibility="Collapsed" Style="{StaticResource ScrollablePageContentStyle}">
+  <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <StackPanel Style="{StaticResource PageHeaderContentStyle}" VerticalAlignment="Center">
+    <TextBlock x:Name="AdvancedTitle" Text="Advanced" FontSize="24" FontWeight="SemiBold" Foreground="{DynamicResource AccentBrush}" Margin="0,10,0,0"/>
+    <TextBlock x:Name="AdvancedSubtitle" Text="Actions avancées sur certains composants Windows. Lisez les avertissements avant exécution." Foreground="{DynamicResource MutedBrush}" Margin="0,3,0,0" TextWrapping="Wrap"/>
+  </StackPanel>
+
+  <ScrollViewer Grid.Row="1" Style="{StaticResource PageScrollViewerStyle}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,-12,0">
+    <StackPanel Style="{StaticResource PageScrollContentStyle}" Margin="0,14,0,0">
+      <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><StackPanel VerticalAlignment="Center"><TextBlock x:Name="AdvancedOneDriveTitle" Text="Microsoft OneDrive" Foreground="{DynamicResource CardTitleBrush}" FontWeight="SemiBold" FontSize="14" Margin="0,0,0,0"/><TextBlock x:Name="AdvancedOneDriveHint" Text="Désinstalle OneDrive, nettoie ses résidus et bloque sa synchronisation via les stratégies Windows. Les fichiers personnels sont conservés si le dossier n’est pas vide." Foreground="{DynamicResource MutedBrush}" Margin="0,3,20,0" FontSize="12" TextWrapping="Wrap" TextTrimming="None"/></StackPanel><Button x:Name="AdvancedOneDriveButton" Grid.Column="1" Style="{StaticResource DangerHoverButtonStyle}" Content="Supprimer OneDrive"/></Grid></Border>
+
+      <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+        <Grid>
+          <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+          <StackPanel VerticalAlignment="Center">
+            <TextBlock x:Name="AdvancedTelemetryTitle" Text="Télémétrie Windows" Foreground="{DynamicResource CardTitleBrush}" FontWeight="SemiBold" FontSize="14"/>
+            <TextBlock x:Name="AdvancedTelemetryHint" Text="Désactive les stratégies et services de télémétrie sans modifier les tâches planifiées. Le mode agressif ajoute les rapports d’erreurs et un blocage persistant d’endpoints connus." Foreground="{DynamicResource MutedBrush}" Margin="0,3,20,0" FontSize="12" TextWrapping="Wrap" TextTrimming="None"/>
+            <StackPanel Orientation="Horizontal" Margin="0,7,20,0">
+              <TextBlock x:Name="AdvancedTelemetryBlockLabel" Text="Blocage endpoints :" Foreground="{DynamicResource MutedBrush}" FontSize="11"/>
+              <TextBlock x:Name="AdvancedTelemetryBlockStatus" Text="Désactivé" Foreground="{DynamicResource TextBrush}" FontSize="11" FontWeight="SemiBold" Margin="5,0,0,0"/>
+            </StackPanel>
+          </StackPanel>
+          <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+              <Button x:Name="AdvancedTelemetryPushedButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Poussée"/>
+              <Button x:Name="AdvancedTelemetryAggressiveButton" Style="{StaticResource DangerHoverButtonStyle}" Content="Agressive" Margin="7,0,0,0"/>
+            </StackPanel>
+            <Button x:Name="AdvancedTelemetryDisableHostsButton" Style="{StaticResource ButtonStyle}" Content="Désactiver le blocage" HorizontalAlignment="Right" Margin="0,7,0,0" Visibility="Collapsed"/>
+          </StackPanel>
+        </Grid>
+      </Border>
+
+      <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><StackPanel VerticalAlignment="Center"><TextBlock x:Name="AdvancedEdgeTitle" Text="Microsoft Edge" Foreground="{DynamicResource CardTitleBrush}" FontWeight="SemiBold" FontSize="14" Margin="0,0,0,0"/><TextBlock x:Name="AdvancedEdgeHint" Text="Supprime complètement Edge Stable et bloque sa réinstallation et ses mises à jour. WebView2 est toujours conservé." Foreground="{DynamicResource MutedBrush}" Margin="0,3,20,0" FontSize="12" TextWrapping="Wrap" TextTrimming="None"/></StackPanel><Button x:Name="AdvancedEdgeButton" Grid.Column="1" Style="{StaticResource DangerHoverButtonStyle}" Content="Supprimer Edge"/></Grid></Border>
+
+      <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><StackPanel VerticalAlignment="Center"><TextBlock x:Name="AdvancedAiTitle" Text="Windows AI" Foreground="{DynamicResource CardTitleBrush}" FontWeight="SemiBold" FontSize="14" Margin="0,0,0,0"/><TextBlock x:Name="AdvancedAiHint" Text="Désactive les stratégies IA, retire Recall lorsque disponible et supprime les packages Copilot/IA installés et provisionnés. Un redémarrage est recommandé." Foreground="{DynamicResource MutedBrush}" Margin="0,3,20,0" FontSize="12" TextWrapping="Wrap" TextTrimming="None"/></StackPanel><Button x:Name="AdvancedAiButton" Grid.Column="1" Style="{StaticResource DangerHoverButtonStyle}" Content="Suppression agressive"/></Grid></Border>
+
+    </StackPanel>
+  </ScrollViewer>
+
+  <Border Grid.Row="2" Style="{StaticResource StickyLogCardStyle}">
+    <StackPanel>
+      <Grid>
+        <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+        <TextBlock x:Name="AdvancedLogTitle" Text="Journal des actions" Foreground="{DynamicResource CardTitleBrush}" FontWeight="SemiBold" FontSize="14" VerticalAlignment="Center"/>
+        <WrapPanel Grid.Column="1" HorizontalAlignment="Right">
+          <Button x:Name="ExportAdvancedLogButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Exporter le journal" Margin="0,0,7,0"/>
+          <Button x:Name="OpenAdvancedLogButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Ouvrir le fichier" Margin="0,0,7,0"/>
+          <Button x:Name="OpenAdvancedLogFolderButton" Style="{StaticResource AccentHoverButtonStyle}" Content="Ouvrir le dossier" Margin="0,0,7,0"/>
+          <Button x:Name="AdvancedClearLogButton" Style="{StaticResource DangerHoverButtonStyle}" Content="Vider le journal"/>
+        </WrapPanel>
+      </Grid>
+      <Grid x:Name="AdvancedLogPanel" Height="145" Margin="0,8,0,0">
+        <RichTextBox x:Name="AdvancedLogBox" Style="{StaticResource LogRichTextBoxStyle}" IsReadOnly="True" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Background="{DynamicResource GridBrush}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource CardBorderBrush}" FontFamily="Consolas" FontSize="11" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"><FlowDocument PagePadding="0" FontFamily="Consolas" FontSize="11"><Paragraph Margin="0"/></FlowDocument></RichTextBox>
+        <Canvas x:Name="AdvancedLogCustomScrollTrack" Width="9" HorizontalAlignment="Right" Margin="0,1,1,10" Background="Transparent" Visibility="Collapsed" Panel.ZIndex="4"><Thumb x:Name="AdvancedLogCustomScrollThumb" Style="{StaticResource ScrollThumbStyle}" Width="9" Height="24" Canvas.Left="0" Canvas.Top="0"/></Canvas>
+      </Grid>
+    </StackPanel>
+  </Border>
+
+  <TextBlock x:Name="AdvancedStatusText" Grid.Row="3" Style="{StaticResource PageHeaderContentStyle}" Text="" Foreground="{DynamicResource MutedBrush}" Margin="1,8,0,0" TextWrapping="Wrap"/>
+</Grid>
