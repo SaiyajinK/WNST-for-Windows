@@ -1,0 +1,462 @@
+{
+  "Version": 1,
+  "SourceNote": "Additional identifiers cross-checked against Win11Debloat Apps.json; WNST keeps its own inventory, classification and removal logic.",
+  "Apps": [
+    {
+      "AppId": "Microsoft.3DBuilder",
+      "FriendlyName": "3D Builder",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "ACGMediaPlayer",
+      "FriendlyName": "ACG Media Player",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "ActiproSoftwareLLC",
+      "FriendlyName": "Actipro Software",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "AdobeSystemsIncorporated.AdobePhotoshopExpress",
+      "FriendlyName": "Adobe Photoshop Express",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Amazon.com.Amazon",
+      "FriendlyName": "Amazon",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Asphalt8Airborne",
+      "FriendlyName": "Asphalt 8",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "AutodeskSketchBook",
+      "FriendlyName": "Autodesk SketchBook",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.BingFinance",
+      "FriendlyName": "Bing Finance",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.BingFoodAndDrink",
+      "FriendlyName": "Bing Food And Drink",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.BingHealthAndFitness",
+      "FriendlyName": "Bing Health And Fitness",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.BingSports",
+      "FriendlyName": "Bing Sports",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.BingTranslator",
+      "FriendlyName": "Bing Translator",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.BingTravel",
+      "FriendlyName": "Bing Travel",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "king.com.BubbleWitch3Saga",
+      "FriendlyName": "Bubble Witch 3",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "CaesarsSlotsFreeCasino",
+      "FriendlyName": "Caesars Slots",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "king.com.CandyCrushSaga",
+      "FriendlyName": "Candy Crush Saga",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "king.com.CandyCrushSodaSaga",
+      "FriendlyName": "Candy Crush Soda",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "COOKINGFEVER",
+      "FriendlyName": "Cooking Fever",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "CyberLinkMediaSuiteEssentials",
+      "FriendlyName": "CyberLink Media Suite",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "DellInc.DellDigitalDelivery",
+      "FriendlyName": "Dell Digital Delivery Services",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "DellInc.DellMobileConnect",
+      "FriendlyName": "Dell Mobile Connect",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "DellInc.DellSupportAssistforPCs",
+      "FriendlyName": "Dell SupportAssist",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "DisneyMagicKingdoms",
+      "FriendlyName": "Disney Magic Kingdoms",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Disney.37853FC22B2CE",
+      "FriendlyName": "Disney+",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "DrawboardPDF",
+      "FriendlyName": "Drawboard PDF",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Duolingo-LearnLanguagesforFree",
+      "FriendlyName": "Duolingo",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "EclipseManager",
+      "FriendlyName": "Eclipse Manager",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "FACEBOOK.FACEBOOK",
+      "FriendlyName": "Facebook",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "FarmVille2CountryEscape",
+      "FriendlyName": "FarmVille 2",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Flipboard",
+      "FriendlyName": "Flipboard",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "HiddenCity",
+      "FriendlyName": "Hidden City",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "AD2F1837.HPAIExperienceCenter",
+      "FriendlyName": "HP AI Experience Center",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPConnectedMusic",
+      "FriendlyName": "HP Connected Music",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPConnectedPhotopoweredbySnapfish",
+      "FriendlyName": "HP Connected Photo",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPDesktopSupportUtilities",
+      "FriendlyName": "HP Desktop Support Utilities",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPEasyClean",
+      "FriendlyName": "HP Easy Clean",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPFileViewer",
+      "FriendlyName": "HP File Viewer",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPJumpStarts",
+      "FriendlyName": "HP JumpStarts",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPPCHardwareDiagnosticsWindows",
+      "FriendlyName": "HP PC Hardware Diagnostics",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPPowerManager",
+      "FriendlyName": "HP Power Manager",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPPrinterControl",
+      "FriendlyName": "HP Printer Control",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPPrivacySettings",
+      "FriendlyName": "HP Privacy Settings",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPQuickDrop",
+      "FriendlyName": "HP QuickDrop",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPQuickTouch",
+      "FriendlyName": "HP QuickTouch",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPRegistration",
+      "FriendlyName": "HP Registration",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPSupportAssistant",
+      "FriendlyName": "HP Support Assistant",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPSureShieldAI",
+      "FriendlyName": "HP Sure Shield AI",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPSystemInformation",
+      "FriendlyName": "HP System Information",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPWelcome",
+      "FriendlyName": "HP Welcome",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "AD2F1837.HPWorkWell",
+      "FriendlyName": "HP WorkWell",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "HULULLC.HULUPLUS",
+      "FriendlyName": "Hulu",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "iHeartRadio",
+      "FriendlyName": "iHeartRadio",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Facebook.Instagram",
+      "FriendlyName": "Instagram",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "E046963F.LenovoCompanion",
+      "FriendlyName": "Lenovo Vantage",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "LenovoCompanyLimited.LenovoVantageService",
+      "FriendlyName": "Lenovo Vantage Service",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "LGElectronics.LGMonitorApp",
+      "FriendlyName": "LG Monitor App",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "LinkedInforWindows",
+      "FriendlyName": "LinkedIn",
+      "Indicator": "Green",
+      "Aliases": [
+        "7EE7776C.LinkedInforWindows"
+      ]
+    },
+    {
+      "AppId": "Sidia.LiveWallpaper",
+      "FriendlyName": "Live Wallpaper",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "MarchofEmpires",
+      "FriendlyName": "March of Empires",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.Messaging",
+      "FriendlyName": "Messaging",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.M365Companions",
+      "FriendlyName": "Microsoft 365 Companions",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "Microsoft.MicrosoftJournal",
+      "FriendlyName": "Microsoft Journal",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.News",
+      "FriendlyName": "Microsoft News",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.PCManager",
+      "FriendlyName": "Microsoft PC Manager",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "AD2F1837.myHP",
+      "FriendlyName": "myHP",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "4DF9E0F8.Netflix",
+      "FriendlyName": "Netflix",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.NetworkSpeedTest",
+      "FriendlyName": "Network Speed Test",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "NYTCrossword",
+      "FriendlyName": "NYT Crossword",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "OneCalendar",
+      "FriendlyName": "One Calendar",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.OneConnect",
+      "FriendlyName": "One Connect",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.Office.OneNote",
+      "FriendlyName": "OneNote",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "PandoraMediaInc",
+      "FriendlyName": "Pandora",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "PhototasticCollage",
+      "FriendlyName": "Phototastic Collage",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "PicsArt-PhotoStudio",
+      "FriendlyName": "PicsArt",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "PolarrPhotoEditorAcademicEdition",
+      "FriendlyName": "Polarr Photo Editor",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.MicrosoftPowerBIForWindows",
+      "FriendlyName": "Power BI",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "AmazonVideo.PrimeVideo",
+      "FriendlyName": "Prime Video",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.Print3D",
+      "FriendlyName": "Print 3D",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.RemoteDesktop",
+      "FriendlyName": "Remote Desktop",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "flaregamesGmbH.RoyalRevolt",
+      "FriendlyName": "Royal Revolt",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "SlingTV",
+      "FriendlyName": "Sling TV",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "SpotifyAB.SpotifyMusic",
+      "FriendlyName": "Spotify",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "Microsoft.Office.Sway",
+      "FriendlyName": "Sway",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "BytedancePte.Ltd.TikTok",
+      "FriendlyName": "TikTok",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "TuneInRadio",
+      "FriendlyName": "TuneIn Radio",
+      "Indicator": "Green"
+    },
+    {
+      "AppId": "5319275A.WhatsAppDesktop",
+      "FriendlyName": "WhatsApp",
+      "Indicator": "Green",
+      "Aliases": [
+        "WhatsAppDesktop"
+      ]
+    },
+    {
+      "AppId": "Microsoft.Whiteboard",
+      "FriendlyName": "Whiteboard",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "Microsoft.StartExperiencesApp",
+      "FriendlyName": "Widgets Experience",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "Microsoft.WidgetsPlatformRuntime",
+      "FriendlyName": "Widgets Platform Runtime",
+      "Indicator": "Yellow"
+    },
+    {
+      "AppId": "WinZipUniversal",
+      "FriendlyName": "WinZip",
+      "Indicator": "Green"
+    }
+  ]
+}
