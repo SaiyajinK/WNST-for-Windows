@@ -911,6 +911,15 @@ function Invoke-WnstOneDriveRemoval {
             }
         }
 
+        $oneDriveUserClsid = "HKCU:\Software\Classes\CLSID\$clsid"
+                try {
+                    Set-WnstRegistryDword $oneDriveUserClsid 'System.IsPinnedToNameSpaceTree' 0
+                    Add-WnstAdvancedAction $actions ('[REG] {0}\System.IsPinnedToNameSpaceTree = 0' -f $oneDriveUserClsid)
+                }
+                catch {
+                    $errors.Add([string]$_.Exception.Message)
+                }
+
         foreach ($runPath in @(
             'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run',
             'HKLM:\Software\Microsoft\Windows\CurrentVersion\Run',
