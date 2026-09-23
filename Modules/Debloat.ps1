@@ -1,4 +1,4 @@
-# WNST - Gestionnaire AppX intégré
+﻿# WNST - Gestionnaire AppX intégré
 # Backend uniquement : aucune UI, aucune sortie console.
 
 $script:AppxFriendlyNames = @{
@@ -808,10 +808,7 @@ function Get-WnstStartPinTargetsForPackageNames {
 }
 
 function Test-WnstStartPinsStillPresent {
-    param(
-        [Parameter(Mandatory=$true)][string[]]$PinIds,
-        [switch]$ThrowOnError
-    )
+    param([Parameter(Mandatory=$true)][string[]]$PinIds,[switch]$ThrowOnError)
 
     $wanted = @{}
     foreach ($id in @($PinIds)) {
@@ -830,10 +827,7 @@ function Test-WnstStartPinsStillPresent {
         }
         return @($remaining)
     }
-    catch {
-        if ($ThrowOnError) { throw }
-        return @($PinIds)
-    }
+    catch { if ($ThrowOnError) { throw }; return @($PinIds) }
     finally {
         if (Test-Path -LiteralPath $tempPath) { Remove-Item -LiteralPath $tempPath -Force -ErrorAction SilentlyContinue }
     }
@@ -1082,17 +1076,11 @@ function Complete-WnstPendingStartMenuCleanup {
         return [pscustomobject]@{ State='PendingRestart'; RemainingCount=$pinIds.Count; ErrorCode='' }
     }
 
-    try {
-        $remaining = @(Test-WnstStartPinsStillPresent -PinIds $pinIds -ThrowOnError)
-    }
+    try { $remaining = @(Test-WnstStartPinsStillPresent -PinIds $pinIds -ThrowOnError) }
     catch {
         [void](Clear-WnstStartPinsPolicy -LayoutPath $paths.Layout)
         Remove-WnstPendingStartMenuCleanupFiles -DataRoot $DataRoot
-        return [pscustomobject]@{
-            State='Completed'
-            RemainingCount=0
-            ErrorCode=''
-        }
+        return [pscustomobject]@{ State='Completed'; RemainingCount=0; ErrorCode='' }
     }
     if ($remaining.Count -eq 0) {
         [void](Clear-WnstStartPinsPolicy -LayoutPath $paths.Layout)
@@ -1100,14 +1088,11 @@ function Complete-WnstPendingStartMenuCleanup {
         return [pscustomobject]@{ State='Completed'; RemainingCount=0; ErrorCode='' }
     }
 
-    # Le redémarrage a eu lieu mais Windows expose encore des épingles ciblées :
-    # réarmer proprement la stratégie pour une nouvelle tentative contrôlée.
-    try {
-        Enable-WnstStartPinsPolicy -LayoutPath $paths.Layout
-        [void](Save-WnstPendingStartMenuCleanup -DataRoot $DataRoot -PinIds $remaining -PolicyArmedBootId $currentBootId)
-    }
-    catch { return [pscustomobject]@{ State='Failed'; RemainingCount=$remaining.Count; ErrorCode='StartLayoutApplyFailed' } }
-    return [pscustomobject]@{ State='PendingRestart'; RemainingCount=$remaining.Count; ErrorCode='' }
+    # Après le redémarrage demandé, ne pas réarmer indéfiniment la stratégie
+    # si Windows conserve encore les épingles ciblées.
+    [void](Clear-WnstStartPinsPolicy -LayoutPath $paths.Layout)
+    Remove-WnstPendingStartMenuCleanupFiles -DataRoot $DataRoot
+    return [pscustomobject]@{ State='Failed'; RemainingCount=$remaining.Count; ErrorCode='StartSuggestionStillPinned' }
 }
 
 function Invoke-WnstStartMenuPostDebloatCleanup {

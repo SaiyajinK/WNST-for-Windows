@@ -1,6 +1,6 @@
 ﻿@{
     RootModule        = 'WNST.psm1'
-    ModuleVersion     = '1.0.0'
+    ModuleVersion     = '1.0.1'
     GUID              = '5ec6361c-63b1-4d6d-88e7-493c16d912c4'
     Author            = 'SaiyajinK'
     Copyright         = '© 2026 SaiyajinK'

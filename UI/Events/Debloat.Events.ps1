@@ -481,7 +481,6 @@ function Invoke-AppxPendingStartMenuCleanupCheck {
             }
             'PendingRestart' {
                 Add-AppxLogLine (TF 'AppxStartCleanupStillPending' @([int]$result.RemainingCount))
-                Invoke-AppxRecommendedRestart
             }
             'Failed' {
                 $errorText = Get-AppxLocalizedResultError -ErrorText ([string]$result.ErrorCode)

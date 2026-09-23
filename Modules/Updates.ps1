@@ -7,7 +7,7 @@
     catch { }
 
     $headers = @{
-        'User-Agent' = 'WNST/1.0.0'
+        'User-Agent' = 'WNST/1.0.1'
         'Accept' = 'application/vnd.github+json'
         'X-GitHub-Api-Version' = '2026-03-10'
     }

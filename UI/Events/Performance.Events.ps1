@@ -145,6 +145,12 @@ function Invoke-HuMovedToggleAction {
     param([Parameter(Mandatory=$true)][object]$Control,[Parameter(Mandatory=$true)][object]$Metadata)
         if ($script:UpdatingPerformanceUi -or -not $Control.IsEnabled) { return }
         $desired = [bool]$Control.IsChecked
+        if ($Metadata.StateProperty -eq 'HomeHidden' -and $desired -and -not (Show-AppConfirm (T 'ConfirmHomeHidden'))) {
+            $script:UpdatingPerformanceUi = $true
+            try { $Control.IsChecked = $false }
+            finally { $script:UpdatingPerformanceUi = $false }
+            return
+        }
         $Control.IsEnabled = $false
         $title = T ([string]$Metadata.TitleKey)
         $logTarget = $Metadata.LogTarget
@@ -197,10 +203,8 @@ function Register-HuMovedToggle {
 function Refresh-WindowsActionState {
     $script:UpdatingPerformanceUi = $true
     try {
-        $homeGalleryIds = @('{f874310e-b6b7-47dc-bc84-b9e6b38f5903}','{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}')
-        $HomeGalleryToggle.IsChecked = @($homeGalleryIds | Where-Object {
-            [int](Get-HuRegistryValue "HKCU:\Software\Classes\CLSID\$_" 'System.IsPinnedToNameSpaceTree' 1) -eq 0
-        }).Count -eq $homeGalleryIds.Count
+        $HomeToggle.IsChecked = [int](Get-HuRegistryValue 'HKCU:\Software\Classes\CLSID\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}' 'System.IsPinnedToNameSpaceTree' 1) -eq 0
+        $GalleryToggle.IsChecked = [int](Get-HuRegistryValue 'HKCU:\Software\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}' 'System.IsPinnedToNameSpaceTree' 1) -eq 0
         $ClockSecondsToggle.IsChecked = [int](Get-HuRegistryValue 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' 'ShowSecondsInSystemClock' 0) -eq 1
         if (Get-Command Update-HuLocalUserControls -ErrorAction SilentlyContinue) { Update-HuLocalUserControls }
         if (Get-Command Update-HuSafeModeBootControls -ErrorAction SilentlyContinue) { Update-HuSafeModeBootControls }
@@ -265,7 +269,8 @@ Register-HuPerformanceToggle $BackgroundServicesToggle 'BackgroundServicesTitle'
 Register-HuPerformanceToggle $TaskbarOptimizeToggle 'TaskbarOptimizeTitle' 'TaskbarOptimized' 'Set-HuTaskbarOptimized'
 Register-HuPerformanceToggle $StartupOptimizeToggle 'StartupOptimizeTitle' 'StartupOptimized' 'Set-HuStartupOptimized'
 
-Register-HuMovedToggle $HomeGalleryToggle 'HomeGalleryTitle' 'HomeGalleryHidden' 'Set-HuHomeGalleryHidden' $WindowsOutputBox
+Register-HuMovedToggle $HomeToggle 'ExplorerHomeTitle' 'HomeHidden' 'Set-HuHomeHidden' $WindowsOutputBox
+Register-HuMovedToggle $GalleryToggle 'GalleryTitle' 'GalleryHidden' 'Set-HuGalleryHidden' $WindowsOutputBox
 Register-HuMovedToggle $ClockSecondsToggle 'ClockSecondsTitle' 'ClockSeconds' 'Set-HuClockSeconds' $WindowsOutputBox
 Register-HuMovedToggle $BingSearchToggle 'BingSearchTitle' 'BingDisabled' 'Set-HuBingSearchDisabled' $CleanupOutputBox
 Register-HuMovedToggle $SponsoredAppsToggle 'SponsoredAppsTitle' 'SponsoredBlocked' 'Set-HuSponsoredAppsBlocked' $CleanupOutputBox

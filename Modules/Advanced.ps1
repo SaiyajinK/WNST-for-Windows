@@ -893,6 +893,14 @@ function Invoke-WnstOneDriveRemoval {
         }
 
         $clsid = '{018D5C66-4533-4307-9B53-224DE2ED1FE6}'
+        try {
+            $key = "HKCU:\Software\Classes\CLSID\$clsid"
+            Set-WnstRegistryDword $key 'System.IsPinnedToNameSpaceTree' 0
+            Add-WnstAdvancedAction $actions ('[REG] {0}\System.IsPinnedToNameSpaceTree = 0' -f $key)
+        }
+        catch {
+            $errors.Add([string]$_.Exception.Message)
+        }
         foreach ($key in @(
             "HKLM:\SOFTWARE\Classes\CLSID\$clsid",
             "HKLM:\SOFTWARE\Classes\Wow6432Node\CLSID\$clsid"
@@ -910,15 +918,6 @@ function Invoke-WnstOneDriveRemoval {
                 Add-WnstAdvancedAction $actions ('[REG] {0} -> ABSENT' -f $key)
             }
         }
-
-        $oneDriveUserClsid = "HKCU:\Software\Classes\CLSID\$clsid"
-                try {
-                    Set-WnstRegistryDword $oneDriveUserClsid 'System.IsPinnedToNameSpaceTree' 0
-                    Add-WnstAdvancedAction $actions ('[REG] {0}\System.IsPinnedToNameSpaceTree = 0' -f $oneDriveUserClsid)
-                }
-                catch {
-                    $errors.Add([string]$_.Exception.Message)
-                }
 
         foreach ($runPath in @(
             'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run',

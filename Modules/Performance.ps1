@@ -282,10 +282,6 @@ function Get-HuPerformanceState {
     $legacyMenu = 'HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32'
     $legacyExplorer = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked'
     $legacyExplorerSupported = [Environment]::OSVersion.Version.Build -lt 22621
-    $homeGalleryIds = @('{f874310e-b6b7-47dc-bc84-b9e6b38f5903}','{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}')
-    $homeGalleryHidden = @($homeGalleryIds | Where-Object {
-        [int](Get-HuRegistryValue "HKCU:\Software\Classes\CLSID\$_" 'System.IsPinnedToNameSpaceTree' 1) -eq 0
-    }).Count -eq $homeGalleryIds.Count
     $suggestionNames = @('SilentInstalledAppsEnabled','SystemPaneSuggestionsEnabled','SubscribedContent-338388Enabled','SubscribedContent-338389Enabled','SubscribedContent-353694Enabled','SubscribedContent-353696Enabled')
     $suggestionsBlocked = @($suggestionNames | Where-Object { [int](Get-HuRegistryValue $content $_ 1) -eq 0 }).Count -eq $suggestionNames.Count
     $animationValuesDisabled = Test-HuWindowsAnimationEffectsDisabled
@@ -312,7 +308,8 @@ function Get-HuPerformanceState {
         Transparency       = [int](Get-HuRegistryValue 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize' 'EnableTransparency' 1) -ne 0
         AnimationsDisabled = $animationValuesDisabled
         ShutdownAnimationDisabled = [int](Get-HuRegistryValue 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' 'DisableStatusMessages' 0) -eq 1
-        HomeGalleryHidden  = $homeGalleryHidden
+        HomeHidden         = [int](Get-HuRegistryValue 'HKCU:\Software\Classes\CLSID\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}' 'System.IsPinnedToNameSpaceTree' 1) -eq 0
+        GalleryHidden      = [int](Get-HuRegistryValue 'HKCU:\Software\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}' 'System.IsPinnedToNameSpaceTree' 1) -eq 0
         ClockSeconds       = [int](Get-HuRegistryValue $explorer 'ShowSecondsInSystemClock' 0) -eq 1
         NotificationsDisabled = $notificationsDisabled
         EndTask            = [int](Get-HuRegistryValue (Join-Path $explorer 'TaskbarDeveloperSettings') 'TaskbarEndTask' 0) -eq 1
@@ -416,14 +413,36 @@ function Set-HuAnimationsDisabled { param([bool]$Disabled)
 function Set-HuShutdownAnimationDisabled { param([bool]$Disabled)
     Assert-HuMachineChange; Set-HuRegistryValue 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' 'DisableStatusMessages' $(if($Disabled){1}else{0})
 }
-function Set-HuHomeGalleryHidden { param([bool]$Hidden)
+function Set-HuNavigationFolderHidden {
+    param([string]$Id,[string]$Clsid,[bool]$Hidden)
     Assert-HuMachineChange
-    Repair-HuHomeGalleryFolderDescriptions | Out-Null
-    $pinValue = if($Hidden){0}else{1}
-    foreach($id in @('{f874310e-b6b7-47dc-bc84-b9e6b38f5903}','{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}')){
-        Set-HuRegistryValue ("HKCU:\Software\Classes\CLSID\$id") 'System.IsPinnedToNameSpaceTree' $pinValue
+    $path = "HKCU:\Software\Classes\CLSID\$Clsid"
+    $name = 'System.IsPinnedToNameSpaceTree'
+    $backupPath = Get-HuPerformanceBackupPath
+    if ($null -eq (Get-HuRegistryValue $backupPath ($Id + '_Exists') $null)) {
+        Set-HuRegistryValue $backupPath ($Id + '_KeyExists') $(if (Test-Path -LiteralPath $path) { 1 } else { 0 })
+        Save-HuRegistryValueState -Id $Id -Path $path -Name $name
+    }
+    $initialValue = if ([int](Get-HuRegistryValue $backupPath ($Id + '_Exists') 0) -eq 1) { Get-HuRegistryValue $backupPath ($Id + '_Value') 1 } else { 1 }
+    if ($Hidden -eq ([int]$initialValue -eq 0)) {
+        $keyExisted = [int](Get-HuRegistryValue $backupPath ($Id + '_KeyExists') 1) -eq 1
+        Restore-HuRegistryValueState -Id $Id -Path $path -Name $name
+        if (-not $keyExisted -and (Test-Path -LiteralPath $path)) {
+            $key = Get-Item -LiteralPath $path
+            if ($key.ValueCount -eq 0 -and $key.SubKeyCount -eq 0) { Remove-Item -LiteralPath $path -Force -ErrorAction Stop }
+        }
+        Remove-HuRegistryValue $backupPath ($Id + '_KeyExists')
+    }
+    else {
+        Set-HuRegistryValue $path $name $(if($Hidden){0}else{1})
     }
     Restart-HuExplorerShell | Out-Null
+}
+function Set-HuHomeHidden { param([bool]$Hidden)
+    Set-HuNavigationFolderHidden -Id 'HomeHidden' -Clsid '{f874310e-b6b7-47dc-bc84-b9e6b38f5903}' -Hidden $Hidden
+}
+function Set-HuGalleryHidden { param([bool]$Hidden)
+    Set-HuNavigationFolderHidden -Id 'GalleryHidden' -Clsid '{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}' -Hidden $Hidden
 }
 function Set-HuClockSeconds { param([bool]$Enabled) Set-HuRegistryValue 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' 'ShowSecondsInSystemClock' $(if($Enabled){1}else{0}) }
 
