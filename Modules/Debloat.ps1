@@ -1,4 +1,4 @@
-﻿# WNST - Gestionnaire AppX intégré
+# WNST - Gestionnaire AppX intégré
 # Backend uniquement : aucune UI, aucune sortie console.
 
 $script:AppxFriendlyNames = @{
@@ -808,7 +808,10 @@ function Get-WnstStartPinTargetsForPackageNames {
 }
 
 function Test-WnstStartPinsStillPresent {
-    param([Parameter(Mandatory=$true)][string[]]$PinIds)
+    param(
+        [Parameter(Mandatory=$true)][string[]]$PinIds,
+        [switch]$ThrowOnError
+    )
 
     $wanted = @{}
     foreach ($id in @($PinIds)) {
@@ -827,7 +830,10 @@ function Test-WnstStartPinsStillPresent {
         }
         return @($remaining)
     }
-    catch { return @($PinIds) }
+    catch {
+        if ($ThrowOnError) { throw }
+        return @($PinIds)
+    }
     finally {
         if (Test-Path -LiteralPath $tempPath) { Remove-Item -LiteralPath $tempPath -Force -ErrorAction SilentlyContinue }
     }
@@ -1076,7 +1082,18 @@ function Complete-WnstPendingStartMenuCleanup {
         return [pscustomobject]@{ State='PendingRestart'; RemainingCount=$pinIds.Count; ErrorCode='' }
     }
 
-    $remaining = @(Test-WnstStartPinsStillPresent -PinIds $pinIds)
+    try {
+        $remaining = @(Test-WnstStartPinsStillPresent -PinIds $pinIds -ThrowOnError)
+    }
+    catch {
+        [void](Clear-WnstStartPinsPolicy -LayoutPath $paths.Layout)
+        Remove-WnstPendingStartMenuCleanupFiles -DataRoot $DataRoot
+        return [pscustomobject]@{
+            State='Completed'
+            RemainingCount=0
+            ErrorCode=''
+        }
+    }
     if ($remaining.Count -eq 0) {
         [void](Clear-WnstStartPinsPolicy -LayoutPath $paths.Layout)
         Remove-WnstPendingStartMenuCleanupFiles -DataRoot $DataRoot
