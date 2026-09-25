@@ -15,7 +15,7 @@ $CheckUpdatesButton.Add_Click({
             $tag = ([string]$release.tag_name).Trim().TrimStart('v','V')
             $latest = $null
             if (-not [Version]::TryParse($tag, [ref]$latest)) { throw (T 'InvalidReleaseVersion') }
-            if ($latest -gt [Version]'1.0.1') {
+            if ($latest -gt [Version]'1.0.2') {
                 $UpdateCheckStatus.Tag = 'Result'; $UpdateCheckStatus.Text = TF 'UpdateAvailableStatus' @($release.tag_name)
                 Set-UpdateCheckResult -State Available -Message (TF 'UpdateAvailableStatus' @($release.tag_name)) -ReleaseUrl ([string]$release.html_url)
             }

@@ -2,7 +2,7 @@
 
 Set-StrictMode -Version 2.0
 
-$script:ToolVersion = '1.0.1'
+$script:ToolVersion = '1.0.2'
 $script:TaskName = 'WNST Daily Update'
 $script:LegacyTaskName = 'H.0.S.T Daily Update'
 $script:BeginMarker = '# BEGIN WNST - managed entries'
